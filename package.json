@@ -1,0 +1,35 @@
+{
+  "name": "jobreactor",
+  "version": "1.0.0",
+  "description": "personalizing the job search",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandonLRobinson1/JobStarter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrandonLRobinson1/JobStarter/issues"
+  },
+  "homepage": "https://github.com/BrandonLRobinson1/JobStarter#readme",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "live-server": "^1.2.0",
+    "mongod": "^2.0.0",
+    "mongoose": "^4.9.5",
+    "request": "^2.81.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "mocha": "^3.2.0"
+  }
+}
