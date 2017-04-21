@@ -5,8 +5,6 @@ var testSchema = mongoose.Schema({
     age: Number
   });
 
-
-
 var testing123 = mongoose.model('Testing123', testSchema);
 
 module.exports = testing123;

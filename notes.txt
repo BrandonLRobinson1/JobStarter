@@ -1,7 +1,12 @@
 set up gulp
 chai/mocha
-databases
+databases - check
 server
 express router
 graphql
 --starters
+
+  "scripts": {
+    "start": "SET NODE_ENV=dev && node server/server.js",
+    "test": "mocha --timeout 10000"
+  },
