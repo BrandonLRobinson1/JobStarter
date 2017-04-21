@@ -1,0 +1,7 @@
+set up gulp
+chai/mocha
+databases
+server
+express router
+graphql
+--starters

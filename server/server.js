@@ -2,7 +2,7 @@ var express     = require( 'express' );
 var bcrypt      = require('bcrypt');
 var bodyParser  = require('body-parser');
 var request     = require('request');
-var router = express.Router()
+var router      = express.Router()
 var PORT        = 8888;
 // process.env
 var app         = express();
