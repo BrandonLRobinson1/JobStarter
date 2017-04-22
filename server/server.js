@@ -1,8 +1,8 @@
 let express     = require( 'express' );
-let db          = require('./db/db.js');
 let bcrypt      = require('bcrypt');
 let bodyParser  = require('body-parser');
 let request     = require('request');
+let db          = require('./db/db.js');
 let router      = express.Router()
 // let config      = require('../config');
 let config      = require('config');
@@ -27,7 +27,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 // app.use(bodyParser.json({ type: 'application/json'}));
 
 app.use( jobStarterRouter );
-
 
 app.listen( PORT, (err) => {
   if (err) console.log(err);
