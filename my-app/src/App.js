@@ -12,15 +12,27 @@ class App extends React.Component {
   }
 
   sendInfo(){
-    alert('A name was submitted: ' + this.state.name);
+    //alert('A name was submitted: ' + this.state.name);
     event.preventDefault();
+
+    axios.post( 'http://localhost:8888/test123', {
+      data: this.state
+    })
+    .then( data => {
+      console.log('axios sent')
+      console.log(data);
+    } )
+    .catch( err => {
+      console.log(err);
+    } );
+
   }
 
   onChange(event) {
     event.preventDefault();
     var state = this.state; // will even work with nested state
 
-    // works but if i need to adjust size of form beyond two it wont work
+    // works but if i need to adjust size of form beyond two fields it wont work
     //event.target.placeholder === 'name' ? state.name = event.target.value : state.age = event.target.value
 
     if (event.target.placeholder === 'name') {
@@ -28,11 +40,12 @@ class App extends React.Component {
       this.setState({
       name: state.name,
     })
+
     }
     if (event.target.placeholder === 'age') {
       state.age = event.target.value
       this.setState({
-      age: state.age
+      age: Number(state.age) // age must be a number
     })
     }
 
@@ -46,8 +59,8 @@ class App extends React.Component {
       <div className="App">
         Connected
         <form onSubmit={ this.sendInfo.bind(this) }>
-          <input type='text' placeholder='name' className="inputName" name="inputName" onChange={ this.onChange.bind(this) } value={this.state.name} ></input>
-          <input type='text' placeholder='age' className="inputAge" name="inputAge" onChange={ this.onChange.bind(this) }  value={this.state.age}></input>
+          <input type='text' placeholder='name' className="inputName" onChange={ this.onChange.bind(this) } value={ this.state.name } required></input>
+          <input type='text' placeholder='age' className="inputAge" onChange={ this.onChange.bind(this) }  value={ this.state.age } required></input>
           <input type='submit' value='Test'></input>
         </form>  
       </div>

@@ -12,6 +12,18 @@ let jobStarterRouter =  require('./resources/jobStarterRouter.js');
 
 let app         = express();
 
+// A resource makes a cross-origin HTTP request when it requests a resource from a different domain, or port than the one which the first resource itself serves
+// header is a key on the response object, so set it with the middle
+app.use( function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With,X-Auth-Token,Content-Type, Content-Length');
+  //res.header('Content-Type', '*');
+
+  console.log('this log comes with every header');
+  next();
+});
+
 
 if (config.util.getEnv('NODE_ENV') !== 'test') {
     //use morgan to log at command line
