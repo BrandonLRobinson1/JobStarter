@@ -10,3 +10,5 @@ graphql
     "start": "SET NODE_ENV=dev && node server/server.js",
     "test": "mocha --timeout 10000"
   },
+
+  pick up on jobstarttest
