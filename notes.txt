@@ -11,4 +11,4 @@ graphql
     "test": "mocha --timeout 10000"
   },
 
-  pick up on jobstarttest
+  pick up on jobstarttest x
