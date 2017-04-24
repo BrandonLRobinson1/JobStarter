@@ -15,8 +15,6 @@ class App extends React.Component {
     //alert('A name was submitted: ' + this.state.name);
     event.preventDefault();
 
-    console.log(this.state);
-
     axios.post( 'http://localhost:8888/test123', {
       data: this.state
     })
