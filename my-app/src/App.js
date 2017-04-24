@@ -15,6 +15,8 @@ class App extends React.Component {
     //alert('A name was submitted: ' + this.state.name);
     event.preventDefault();
 
+    console.log(this.state);
+
     axios.post( 'http://localhost:8888/test123', {
       data: this.state
     })
@@ -23,6 +25,7 @@ class App extends React.Component {
       console.log(data);
     } )
     .catch( err => {
+      console.log('caught');
       console.log(err);
     } );
 
@@ -45,7 +48,7 @@ class App extends React.Component {
     if (event.target.placeholder === 'age') {
       state.age = event.target.value
       this.setState({
-      age: Number(state.age) // age must be a number
+      age: state.age //Number(state.age) // age must be a number
     })
     }
 

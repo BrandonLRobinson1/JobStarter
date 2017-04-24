@@ -6,7 +6,7 @@ var testSchema = mongoose.Schema({
   });
 
 testSchema.methods.myName = function( ){
-  var greeting = this.name ? 'Hello my name ' + this.name : "I..... am nameless :("
+  var greeting = this.name ? 'Hello my name is ' + this.name : "I..... am nameless :("
   console.log(greeting);
 }
 
