@@ -7,7 +7,8 @@ let router      = express.Router()
 // let config      = require('../config');
 let config      = require('config');
 let morgan      = require('morgan');
-var PORT        = process.env.NODE_ENV || 8888;
+var PORT        = 8888;
+// var PORT        = process.env.NODE_ENV || 8888;
 let jobStarterRouter =  require('./resources/jobStarterRouter.js');
 
 let app         = express();
@@ -24,8 +25,11 @@ app.use( function(req, res, next) {
   next();
 });
 
-
-if (config.util.getEnv('NODE_ENV') !== 'test') {
+//don't show the log when it is test
+// console.log(config.util.getEnv('NODE_ENV'), 'node envyyy');
+if(config.util.getEnv('NODE_ENV') !== 'test') {
+//if(process.env.NODE_ENV !== 'test') {
+  console.log('runs')
     //use morgan to log at command line
     app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
 }

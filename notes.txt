@@ -11,4 +11,6 @@ graphql
     "test": "mocha --timeout 10000"
   },
 
-  pick up on jobstarttest x
+SET NODE_ENV=dev &&
+
+try and fix NODEENV and test dev with package json

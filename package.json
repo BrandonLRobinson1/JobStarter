@@ -4,7 +4,7 @@
   "description": "personalizing the job search",
   "main": "index.html",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "NODE_ENV=dev && node server/server.js",
     "test": "mocha --timeout 10000"
   },
   "repository": {
