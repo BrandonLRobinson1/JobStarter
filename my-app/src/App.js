@@ -19,7 +19,7 @@ class App extends React.Component {
       this.state
     )
     .then( data => {
-      console.log('axios sent')
+      console.log('axios sent');
       console.log(data);
     } )
     .catch( err => {
