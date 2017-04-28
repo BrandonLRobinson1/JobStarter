@@ -4,6 +4,12 @@ databases - check
 server
 express router
 graphql
+SASS
+redux
+webcam
+elasticSearch
+
+
 --starters
 
   "scripts": {
