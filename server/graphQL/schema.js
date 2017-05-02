@@ -1,7 +1,5 @@
 var graphql = require ('graphql');
-// var mongoose = require('mongoose');
 var mongoose = require('../db/db')
-
 
 // var LIST = [  
 //   {
@@ -19,7 +17,7 @@ var mongoose = require('../db/db')
 var List = mongoose.model('Testing123', {  
   // id: mongoose.Schema.Types.ObjectId,
   name: String,
-  age: String
+  age: Number
 })
 
 //defining a data type for each attribute
