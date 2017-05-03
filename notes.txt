@@ -17,7 +17,8 @@ graphql
 do a system design
 and table just because
 
-*figure out why gulp watch isnt working
+`````*figure out why gulp watch isnt working
+`````figure out site for graphql
 
 google maps integration, to see where the job is in accordance to you
 

@@ -21,13 +21,18 @@
     "axios": "^0.16.1",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "express-graphql": "^0.6.4",
+    "express-session": "^1.15.2",
+    "express-static": "^1.1.0",
     "graphql": "^0.9.5",
     "live-server": "^1.2.0",
     "mongod": "^2.0.0",
     "mongoose": "^4.9.5",
     "request": "^2.81.0",
+    "router-express": "^1.5.2",
+    "simple-oauth2": "^1.2.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
