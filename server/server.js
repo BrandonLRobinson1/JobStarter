@@ -1,14 +1,13 @@
 let express     = require('express');
-// let config      = require('../server/config');
 let bcrypt      = require('bcrypt');
 let bodyParser  = require('body-parser');
 let cookieParser= require('cookie-parser');
 let session     = require('express-session');
 let request     = require('request');
 let db          = require('./db/db.js');
-let router      = express.Router()
-// let config      = require('../config');
+let router      = express.Router();
 let config      = require('config');
+// let config      = require('../node_modules/config');
 let morgan      = require('morgan');
 var PORT        = 8888;
 // var PORT        = process.env.NODE_ENV || 8888;
@@ -54,12 +53,6 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
     //use morgan to log at command line
     app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
 }
-
-
-
-
-
-
 
 
 // middlewear
