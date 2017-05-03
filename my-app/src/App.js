@@ -6,13 +6,13 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      name: '',
-      age: ''
+      email: '',
+      password: ''
     }
   }
 
   sendInfo(){
-    //alert('A name was submitted: ' + this.state.name);
+    //alert('A email was submitted: ' + this.state.email);
     event.preventDefault();
 
     axios.post( 'http://localhost:8888/test123',
@@ -34,19 +34,19 @@ class App extends React.Component {
     var state = this.state; // will even work with nested state
 
     // works but if i need to adjust size of form beyond two fields it wont work
-    //event.target.placeholder === 'name' ? state.name = event.target.value : state.age = event.target.value
+    //event.target.placeholder === 'email' ? state.email = event.target.value : state.password = event.target.value
 
-    if (event.target.placeholder === 'name') {
-      state.name = event.target.value
+    if (event.target.placeholder === 'email') {
+      state.email = event.target.value
       this.setState({
-      name: state.name,
+      email: state.email,
     })
 
     }
-    if (event.target.placeholder === 'age') {
-      state.age = event.target.value
+    if (event.target.placeholder === 'password') {
+      state.password = event.target.value
       this.setState({
-      age: state.age //Number(state.age) // age must be a number
+      password: state.password //Number(state.password) // password must be a string
     })
     }
 
@@ -60,8 +60,8 @@ class App extends React.Component {
       <div className="App">
         Connected
         <form onSubmit={ this.sendInfo.bind(this) }>
-          <input type='text' placeholder='name' className="inputName" onChange={ this.onChange.bind(this) } value={ this.state.name } required></input>
-          <input type='text' placeholder='age' className="inputAge" onChange={ this.onChange.bind(this) }  value={ this.state.age } required></input>
+          <input type='text' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
+          <input type='text' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
           <input type='submit' value='Test'></input>
         </form>  
       </div>

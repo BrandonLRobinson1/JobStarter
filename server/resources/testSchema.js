@@ -1,16 +1,34 @@
 let mongoose = require('mongoose');
 
-var testSchema = mongoose.Schema({
-    name: String,
-    age: Number
+var userSchema = mongoose.Schema({
+    email: String,
+    password: String,
+    userInfo: {
+      name: String,
+      address: String,
+      relocation: Boolean,
+      age: Number,
+      phone: Number,
+      resume: String,
+      coverLetter: String,
+      fit: String,
+      linkedIn: String,
+      gitHub: String,
+      authorized: Boolean,
+      disability: Boolean,
+      gender: String,
+      race: String,
+      veteran: Boolean,
+      linkToVideo: String
+    }
   });
 
-testSchema.methods.myName = function( ){
-  var greeting = this.name ? 'Hello my name is ' + this.name : "I..... am nameless :("
+userSchema.methods.myName = function( ){
+  var greeting = this.email ? 'Hello my email is ' + this.email : "I..... am emailless :("
   console.log(greeting);
 }
 
 
-var testing123 = mongoose.model('Testing123', testSchema);
+var User = mongoose.model('User', userSchema);
 
-module.exports = testing123;
+module.exports = User;

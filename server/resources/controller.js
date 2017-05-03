@@ -1,17 +1,17 @@
-let testing123 = require('./testSchema.js');
+let User = require('./testSchema.js');
 
 exports.testUser = function(req, res){
 
-  var employee = new testing123( req.body );
-  console.log(employee, ' employee');
+  var newUser = new User( req.body );
+  console.log(newUser, ' newUser');
   
-  employee.save( (err, employee) => {
+  newUser.save( (err, newUser) => {
     
     if (err) { 
       console.error(err) 
     } else {
     console.log('saved');
-    employee.myName();
+    newUser.myName();
     }
 
   } );

@@ -18,6 +18,9 @@ let LocalStrategy = require('passport-local').Strategy;
 
 let app         = express();
 
+process.env.NODE_ENV = 'dev'
+// console.log('SUPPRESS_NO_CONFIG_WARNING: ' + config.util.getEnv('SUPPRESS_NO_CONFIG_WARNING'));
+// console.log(config.util.env)
 
 // A resource makes a cross-origin HTTP request when it requests a resource from a different domain, or port than the one which the first resource itself serves
 // header is a key on the response object, so set it with the middle
