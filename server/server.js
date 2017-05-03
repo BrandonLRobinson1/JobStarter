@@ -5,9 +5,8 @@ let cookieParser= require('cookie-parser');
 let session     = require('express-session');
 let request     = require('request');
 let db          = require('./db/db.js');
-let router      = express.Router();
+//let router      = express.Router(); // <----- error says it requires callback
 let config      = require('config');
-// let config      = require('../node_modules/config');
 let morgan      = require('morgan');
 var PORT        = 8888;
 // var PORT        = process.env.NODE_ENV || 8888;
@@ -18,7 +17,6 @@ let LocalStrategy = require('passport-local').Strategy;
 
 let app         = express();
 
-process.env.NODE_ENV = 'dev'
 // console.log('SUPPRESS_NO_CONFIG_WARNING: ' + config.util.getEnv('SUPPRESS_NO_CONFIG_WARNING'));
 // console.log(config.util.env)
 
@@ -35,7 +33,7 @@ app.use( function(req, res, next) {
 });
 
 app.use(express.static('public'));
-app.use(cookieParser());
+app.use(cookieParser('tell nobody'));
 app.use(passport.initialize());
 app.use(passport.session());
 

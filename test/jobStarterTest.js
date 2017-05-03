@@ -8,10 +8,10 @@ let should      = chai.should();
 chai.use(chaiHttp);
 
 describe( 'Persons', ()=>{
-  it('should not create user if fields are empty', done => {
+  it('test user should be created', done => {
     data = {
-      name: 'Sammy',
-      age: 28
+      email: 'Sammy@aol.com',
+      password: 'xxx'
     }
     chai.request(server)
       .post('/test123') //only add route**
@@ -19,7 +19,6 @@ describe( 'Persons', ()=>{
       .end( (err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
-        //res.body.should.have.property('errors');
         done();
       } );
   } );
