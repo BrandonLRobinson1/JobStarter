@@ -5,16 +5,11 @@ import React from 'react';
 // import axios from 'axios';
 
 const SignUp = () => {
-
-
-
-    return (
+  return (
     <div className="App">
-        gimme ur info!
-  
-      </div>
-    );
-  
+      gimme ur info!
+    </div>
+  );
 }
 
 export default SignUp;

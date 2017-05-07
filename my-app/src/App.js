@@ -70,46 +70,20 @@ onChange(event) {
 
 render() {
 
-    return (
-      <Router>
-        <div className="container">
-
-          <Nav />
+  return (
+    <Router>
+      <div className="container">
+        <Nav />
         <Route path="/LogIn" state={this.state} component={LogIn}/>
         <Route path="/SignUp" component={SignUp}/>
         <Route exact path='/' component={Home}/>
         <footer>
           <h1>footer thing</h1>
         </footer>
-
-        </div>
-      </Router>
-  ) 
-
+      </div>
+    </Router>
+    ) 
   } 
 }
 
 export default App;
-
-// <li><a href="/">Home</a></li>
-// <li><a href="/LogIn">Log In</a></li>
-// <li><a href="/SignUp">Sign Up</a></li>
-
-// return (
-//         <Router>
-//           <div className="App">
-//             <div className="App-header">
-//               <Link  to="/LogIn">LogIn</Link>
-//               <Link  to="/SignUp">SignUp</Link>
-//             </div>
-//             <Route path="/LogIn" component={LogIn}/>
-//             <Route path="/SignUp" component={SignUp}/>
-//             <Route exact path='/' component={Home}/>
-//           </div>
-//         </Router>
-//     ) 
-
-//import SignUp from './components/SignUp'
-//<Link to="/">SignUp</Link>
-//<Route exact path="/SignUp" component={SignUp}/>
-

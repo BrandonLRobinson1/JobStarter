@@ -58,7 +58,7 @@ sendInfo(){
 
 
   render() {
-    console.log(this.props, 'loggg')
+    console.log(this.props.route, this.state, 'loggg')
     return (
       <div className="App">
         Connected

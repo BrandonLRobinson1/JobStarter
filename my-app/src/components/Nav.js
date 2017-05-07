@@ -21,7 +21,6 @@ const Nav = ( ) => {
         </NavLink>
       </li>
     </ul>
-
     )
 }
 
