@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 
-import Nav from './components/Nav';
+// import Nav from './components/Nav';
 import Home from './components/Home';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
@@ -10,7 +10,9 @@ import SignUp from './components/SignUp';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
+  //Link,
+  NavLink,
+  browserHistory
   //Match
 } from 'react-router-dom'
 
@@ -69,17 +71,48 @@ onChange(event) {
 
 
 render() {
+
+  const { from } = this.state || { from: { pathname: '/LogIn' } }
+
   if (this.state.loggedin){
     return(
       <div>luckyyyyy</div>
       )
   } else {
   return (
-    <Router>
+    <Router history={browserHistory}>
       <div className="container">
-        <Nav />
-        <Route path="/LogIn" state={this.state} component={LogIn}/>
-        <Route path="/SignUp" component={SignUp}/>
+        <ul className="nav">
+      <li>
+        <NavLink 
+        exact activeClassName='active' 
+        to='/'
+        >
+          Home
+        </NavLink>
+      </li> 
+      <li>
+        <NavLink 
+        activeClassName='active' 
+
+        to="/SignUp">
+          Sign Up
+        </NavLink>
+      </li>
+      <li>
+      <NavLink
+        activeClassName='active' 
+        to={{
+          pathname:"/LogIn",
+          state: this.state
+      }}
+        >
+          Log In
+        </NavLink>
+      </li>
+    </ul>
+        <Route path="/LogIn"  component={LogIn}/>
+        <Route path="/SignUp" things={this.state} component={SignUp}/>
         <Route exact path='/' component={Home}/>
         <footer>
           <h1>footer thing</h1>

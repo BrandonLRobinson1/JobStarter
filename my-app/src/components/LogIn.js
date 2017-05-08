@@ -6,7 +6,6 @@ import React from 'react';
 
 const LogIn = (props) => {
 
-
     console.log(props)
     return (
       <div className="App">
@@ -14,8 +13,6 @@ const LogIn = (props) => {
       </div>
     );
 
-
-  
 }
 
 export default LogIn;

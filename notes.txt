@@ -45,3 +45,5 @@ MAKE SURE TO ADD APPROPRIATE COMMENTS AND DOCUMENTATION
 SET NODE_ENV=dev &&
 
 try and fix NODEENV and test dev with package json
+
+https://stackoverflow.com/questions/42893669/how-do-i-pass-props-in-react-router-v4
