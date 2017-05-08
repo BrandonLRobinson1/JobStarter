@@ -69,7 +69,11 @@ onChange(event) {
 
 
 render() {
-
+  if (this.state.loggedin){
+    return(
+      <div>luckyyyyy</div>
+      )
+  } else {
   return (
     <Router>
       <div className="container">
@@ -82,8 +86,9 @@ render() {
         </footer>
       </div>
     </Router>
-    ) 
-  } 
+    )     
+  }
+} 
 }
 
 export default App;

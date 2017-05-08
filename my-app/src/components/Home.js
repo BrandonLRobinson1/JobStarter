@@ -7,10 +7,10 @@ class Home extends React.Component{
 
   render(){
     return (
-      <div>hi</div>
+      <div className="App">hi</div>
     )
   }
-  
+
 }
 
 export default Home;
