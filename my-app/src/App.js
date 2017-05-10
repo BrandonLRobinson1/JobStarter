@@ -24,11 +24,11 @@ class App extends React.Component {
     }
 }
 
-// logginInSuccessful(){
-//   this.setState({
-//     loggedin: true
-//   })
-// }
+logginInSuccessful(){
+  this.setState({
+    loggedin: true
+  })
+}
 
 
 render() {
@@ -48,9 +48,9 @@ if (this.state.loggedin){
             </NavLink>
           </li>
           <li>
-          <NavLink activeClassName='active' to={{pathname:"/LogIn", state:{ state: this.state.loggedin } }} >
+          <NavLink activeClassName='active' to={{pathname:"/LogIn", state:{ fromDashboard: this.state.loggedin }, func:{ key1:this.logginInSuccessful.bind(this) }  }} >
               Log In
-            </NavLink>
+          </NavLink>
           </li>
     </ul>
         <Route path="/LogIn"  component={LogIn}/>
@@ -66,8 +66,9 @@ if (this.state.loggedin){
 } 
 }
 
+
 export default App;
 
 //        <LogIn value={this.state.loggedin} verified={this.logginInSuccessful.bind(this)}/>
           // <NavLink activeClassName='active' to={{pathname:"/LogIn", state:{ fromDashboard: this.state.loggedin } }} >
-
+// , success: {key1:this.logginInSuccessful.bind(this)}

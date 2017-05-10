@@ -69,8 +69,9 @@ class LogIn extends React.Component {
 
 
   render() {
-    console.log(this.props)
-    console.log(this.props.location.state)
+
+    console.log(location.pathname)
+    console.log(this.props.location)
 
     if(this.state.success){
       return(
@@ -96,10 +97,4 @@ class LogIn extends React.Component {
   }
 }
 
-
 export default LogIn;
-        // <form onSubmit={ this.sendInfo.bind(this) }>
-        //   <input type='text' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
-        //   <input type='text' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
-        //   <input type='submit' value='Test'></input>
-        // </form>  
