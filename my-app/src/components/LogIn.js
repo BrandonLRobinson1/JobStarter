@@ -18,8 +18,7 @@ class LogIn extends React.Component {
     }
   }
 
-   c
-  sendInfo(){
+  sendInfo(event){
     //alert('A email was submitted: ' + this.state.email);
     event.preventDefault();
 
@@ -29,7 +28,6 @@ class LogIn extends React.Component {
     .then( data => {
       console.log('axios sent');
       console.log(data);
-      //can set state here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     } )
     .catch( err => {
       console.log('caught');
@@ -68,7 +66,7 @@ class LogIn extends React.Component {
   render() {
 
     console.log(location.pathname)
-    // console.log(this.props.location)
+    console.log(this.props.location, ' is this a refresh, or not')
 
     if(this.state.success){
       return(
