@@ -1,5 +1,6 @@
 import React from 'react';
 import HomePage from './HomePage';
+import axios from 'axios';
 import {
   BrowserRouter as Router,
   Route,
@@ -8,21 +9,16 @@ import {
   //Match
 } from 'react-router-dom'
 
-// import { BrowserRouter, Match, Miss } from 'react-router';
-// import App from '../App.js'
-
-import axios from 'axios';
-
 class LogIn extends React.Component {
   constructor( props ){
     super( props );
     this.state = {
       email: '',
-      password: '',
-      success: false
+      password: ''
     }
   }
 
+   c
   sendInfo(){
     //alert('A email was submitted: ' + this.state.email);
     event.preventDefault();
@@ -40,6 +36,7 @@ class LogIn extends React.Component {
       console.log(err);
     } );
 
+      this.props.location.success.key();
   }
 
   onChange(event) {
@@ -71,7 +68,7 @@ class LogIn extends React.Component {
   render() {
 
     console.log(location.pathname)
-    console.log(this.props.location)
+    // console.log(this.props.location)
 
     if(this.state.success){
       return(

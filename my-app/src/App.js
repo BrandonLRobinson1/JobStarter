@@ -48,7 +48,7 @@ if (this.state.loggedin){
             </NavLink>
           </li>
           <li>
-          <NavLink activeClassName='active' to={{pathname:"/LogIn", state:{ fromDashboard: this.state.loggedin }, func:{ key1:this.logginInSuccessful.bind(this) }  }} >
+          <NavLink activeClassName='active' to={{pathname:"/LogIn", state:{ fromDashboard: this.state.loggedin }, success:{ key:this.logginInSuccessful.bind(this) } }} >
               Log In
           </NavLink>
           </li>
