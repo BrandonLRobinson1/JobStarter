@@ -65,7 +65,6 @@ if (this.state.loggedin){
 } 
 }
 
-
 export default App;
 
 //        <LogIn value={this.state.loggedin} verified={this.logginInSuccessful.bind(this)}/>

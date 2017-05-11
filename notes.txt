@@ -47,3 +47,6 @@ SET NODE_ENV=dev &&
 try and fix NODEENV and test dev with package json
 
 https://stackoverflow.com/questions/42893669/how-do-i-pass-props-in-react-router-v4
+
+
+set a cookie - set up back end for auth and endpoints

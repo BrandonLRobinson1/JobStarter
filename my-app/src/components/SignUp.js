@@ -32,7 +32,7 @@ class SignUp extends React.Component {
     //alert('A email was submitted: ' + this.state.email);
     event.preventDefault();
 
-    axios.post( 'http://localhost:8888/test123',
+    axios.post( 'http://localhost:8888/signup',
       this.state
     )
     .then( data => {
@@ -71,17 +71,15 @@ class SignUp extends React.Component {
     })
     }
 
-
-    console.log(this.state)
   }
 
 
   render() {
-    console.log(localStorage, 'local storage')
-    console.log(this.props, ' prop')
-    console.log(window.sessionStorage)
-    console.log(location.pathname)
-    console.log(this.props.location, ' is this a refresh, or not')
+    // console.log(localStorage, 'local storage')
+    // console.log(this.props, ' prop')
+    // console.log(window.sessionStorage)
+    // console.log(location.pathname)
+    // console.log(this.props.location, ' is this a refresh, or not')
 
     if(this.state.goToLogIn){
       return(
@@ -98,8 +96,8 @@ class SignUp extends React.Component {
       <div className="App">
         Connected
         <form onSubmit={ this.sendInfo.bind(this) }>
-          <input type='text' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
-          <input type='text' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
+          <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
+          <input type='password' minLength='5' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
           <input type='submit' value='Test'></input>
         </form>  
       </div>
