@@ -31,6 +31,7 @@ class SignUp extends React.Component {
   sendInfo(event){
     //alert('A email was submitted: ' + this.state.email);
     event.preventDefault();
+    let that = this;
 
     axios.post( 'http://localhost:8888/signup',
       this.state
@@ -38,6 +39,8 @@ class SignUp extends React.Component {
     .then( data => {
       console.log('axios sent');
       console.log(data);
+      // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
+      that.readyForLogIn()
     } )
     .catch( err => {
       console.log('caught');
@@ -45,8 +48,7 @@ class SignUp extends React.Component {
       // reload page with err message ONCE reload is working <=========
     } );
 
-      console.log(this.readyForLogIn, 'r4l');
-      this.readyForLogIn();  // <==== need to move inside axios then
+      //this.readyForLogIn();  // <==== need to move inside axios then
 
   }
 
@@ -96,8 +98,8 @@ class SignUp extends React.Component {
       <div className="App">
         Connected
         <form onSubmit={ this.sendInfo.bind(this) }>
-          <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
-          <input type='password' minLength='5' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
+          <input type='text' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
+          <input type='text' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
           <input type='submit' value='Test'></input>
         </form>  
       </div>
@@ -107,3 +109,6 @@ class SignUp extends React.Component {
 }
 
 export default SignUp;
+
+// <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
+          // <input type='password' minLength='5' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>

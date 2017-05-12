@@ -80,8 +80,8 @@ class LogIn extends React.Component {
       <div className="App">
         Connected
         <form onSubmit={ this.sendInfo.bind(this) }>
-          <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
-          <input type='password' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
+          <input type='text' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
+          <input type='text' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
           <input type='submit' value='Test'></input>
         </form>  
       </div>
@@ -91,3 +91,6 @@ class LogIn extends React.Component {
 }
 
 export default LogIn;
+
+// <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
+          // <input type='password' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
