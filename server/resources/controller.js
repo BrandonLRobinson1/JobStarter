@@ -10,7 +10,7 @@ exports.createUser = function(req, res){
   //console.log(email, ' email', hash, ' saltyyyyy');
   // var newUser = new User( req.body );
 
-  var newUser = new User( {
+  let newUser = new User( {
     email: email,
     password: hash
   } );
@@ -19,7 +19,7 @@ exports.createUser = function(req, res){
   User.findOne({email: email}, (err, user)=>{
     if (err) { return handleError(err) } 
     if (!user) {
-      console.log('heres where we create')
+      //console.log('heres where we create')
       newUser.save( function(err, newuser){
         if (err) console.log(err)
         console.log(newuser);

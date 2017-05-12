@@ -8,6 +8,7 @@ import SignUp from './components/SignUp';
 
 import {
   BrowserRouter as Router,
+  // HashRouter as Router,
   Route,
   //Link,
   NavLink,

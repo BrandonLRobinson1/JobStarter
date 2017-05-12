@@ -3,6 +3,7 @@ import HomePage from './HomePage';
 import axios from 'axios';
 import {
   BrowserRouter as Router,
+  // HashRouter as Router,
   Route,
   browserHistory,
   Redirect

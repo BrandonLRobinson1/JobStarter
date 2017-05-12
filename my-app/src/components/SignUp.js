@@ -4,13 +4,12 @@ import LogIn from './LogIn';
 
 import {
   BrowserRouter as Router,
+  // HashRouter as Router,
   Route,
   browserHistory,
   Redirect
   //Match
 } from 'react-router-dom'
-
-// import axios from 'axios';
 
 class SignUp extends React.Component {
   constructor( props ){
@@ -40,15 +39,15 @@ class SignUp extends React.Component {
       //console.log('axios sent');
       console.log(data, ' green light dataaaa');
       // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
-      that.readyForLogIn()
+      that.readyForLogIn();
     } )
     .catch( err => {
-      if (err) return err
-      alert('username already in use')
+      if (err) console.log( err );
+      alert('username already in use');
       this.setState({
         email: '',
         password: ''
-      })
+      });
       // reload page with err message ONCE reload is working <=========
     } );
 
