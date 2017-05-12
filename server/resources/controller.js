@@ -10,27 +10,26 @@ exports.createUser = function(req, res){
   //console.log(email, ' email', hash, ' saltyyyyy');
   // var newUser = new User( req.body );
 
-  var result;
   var newUser = new User( {
     email: email,
     password: hash
   } );
-
-  console.log(newUser, ' newUser');
   
-  //******* need to findone, if it doesnt exist them save
-  newUser.save( (err, newUser) => {
-    
-    if (err) { 
-      console.error(err, ' duplicate!!!');
-      res.status(400).send('user already exists');
+  //******* need to use findone, if it doesnt exist them save
+  User.findOne({email: email}, (err, user)=>{
+    if (err) { return handleError(err) } 
+    if (!user) {
+      console.log('heres where we create')
+      newUser.save( function(err, newuser){
+        if (err) console.log(err)
+        console.log(newuser);
+        res.status(201).send(newUser);
+      } );
     } else {
-      console.log('saved');
-      newUser.myName();
-      res.status(201).send(newUser);
+      console.log('already created');
+      res.status(400).send('user already exists');
     }
-
-  } );
+  });
   
 };
 
