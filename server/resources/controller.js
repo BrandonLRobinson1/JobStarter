@@ -10,6 +10,7 @@ exports.createUser = function(req, res){
   //console.log(email, ' email', hash, ' saltyyyyy');
   // var newUser = new User( req.body );
 
+  var result;
   var newUser = new User( {
     email: email,
     password: hash
@@ -21,14 +22,15 @@ exports.createUser = function(req, res){
   newUser.save( (err, newUser) => {
     
     if (err) { 
-      console.error(err) 
+      console.error(err, ' duplicate!!!');
+      res.status(400).send('user already exists');
     } else {
-    console.log('saved');
-    newUser.myName();
+      console.log('saved');
+      newUser.myName();
+      res.status(201).send(newUser);
     }
 
   } );
-  res.send('done');
   
 };
 

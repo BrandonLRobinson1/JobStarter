@@ -38,13 +38,18 @@ class SignUp extends React.Component {
     )
     .then( data => {
       console.log('axios sent');
-      console.log(data);
+      console.log(data, ' green light dataaaa');
       // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
       that.readyForLogIn()
     } )
     .catch( err => {
-      console.log('caught');
+      console.log(' caught');
       console.log(err);
+      alert('username already in use')
+      this.setState({
+        email: '',
+        password: ''
+      })
       // reload page with err message ONCE reload is working <=========
     } );
 
