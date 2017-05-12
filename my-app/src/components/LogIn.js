@@ -27,15 +27,18 @@ class LogIn extends React.Component {
       this.state
     )
     .then( data => {
-      console.log('axios sent');
+      console.log('login succesful');
       console.log(data);
+      this.props.location.success.key();
     } )
     .catch( err => {
-      console.log('caught');
-      console.log(err);
-    } );
-
-      this.props.location.success.key();
+       if (err) console.log( err );
+       alert('username or password incorrect');
+       this.setState({
+        email: '',
+        password: ''
+      });
+    });  
   }
 
   onChange(event) {

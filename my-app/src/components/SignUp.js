@@ -28,7 +28,7 @@ class SignUp extends React.Component {
   }
 
   sendInfo(event){
-    //alert('A email was submitted: ' + this.state.email);
+
     event.preventDefault();
     let that = this;
 
@@ -36,8 +36,7 @@ class SignUp extends React.Component {
       this.state
     )
     .then( data => {
-      //console.log('axios sent');
-      console.log(data, ' green light dataaaa');
+      console.log('axios sent');
       // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
       that.readyForLogIn();
     } )
@@ -50,8 +49,6 @@ class SignUp extends React.Component {
       });
       // reload page with err message ONCE reload is working <=========
     } );
-
-      //this.readyForLogIn();  // <==== need to move inside axios then
 
   }
 

@@ -35,7 +35,7 @@ render() {
 
 if (this.state.loggedin){
     return(
-      <div>luckyyyyy</div>
+      <div>Main page with new navigation</div>
       )
   } else {
   return (

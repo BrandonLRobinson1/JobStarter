@@ -1,23 +1,23 @@
 // var app = require('../server');
-let bcrypt      = require('bcrypt');
+let bcrypt        = require('bcrypt');
+let passport      = require('passport');
+let LocalStrategy = require('passport-local').Strategy;
+let User          = require('./testSchema.js');
 
-let User = require('./testSchema.js');
 
 exports.createUser = function(req, res){
   let email = req.body.email;
-  let salt = bcrypt.genSaltSync(10);
-  let hash = bcrypt.hashSync(req.body.password, salt);
-  //console.log(email, ' email', hash, ' saltyyyyy');
-  // var newUser = new User( req.body );
+  // let salt = bcrypt.genSaltSync(10);
+  let hash = bcrypt.hashSync(req.body.password, 10); // no need to use salt can jst replace it with ten
 
   let newUser = new User( {
     email: email,
     password: hash
   } );
   
-  //******* need to use findone, if it doesnt exist them save
   User.findOne({email: email}, (err, user)=>{
     if (err) { return handleError(err) } 
+    
     if (!user) {
       //console.log('heres where we create')
       newUser.save( function(err, newuser){
@@ -34,19 +34,28 @@ exports.createUser = function(req, res){
 };
 
 exports.verifyUser = function(req, res){
-  console.log(req.body, ' bodayyyeee')
   let email = req.body.email;
-  // let salt = bcrypt.genSaltSync(10);
-  // let hash = bcrypt.hashSync(req.body.password, salt);
-  // let password = bcrypt.compareSync(req.body.password, hash);
-  // console.log(email, password, ' verify me')
+  let password = req.body.password;
+
+  //insert session or passport
+
   User.findOne({email: email}, (err, user)=>{
     if (err) return handleError(err);
-    console.log(user, ' user found');
+    console.log('user found');
+
+    bcrypt.compare(password, user.password, function(err, response) {
+      //response is true if and only if passwords match
+      if (response) {
+        res.status(201).send(user);
+      } else {
+        res.status(400).send('username or password incorrect');
+      }
+
+    });
 
   });
-  //======>***all fucked up because the password i should be comparing it to is actually what is in the database and also need to incorporate session and passport
 
-  res.send('done');
 }
 
+exports.passport;
+exports.LocalStrategy;
