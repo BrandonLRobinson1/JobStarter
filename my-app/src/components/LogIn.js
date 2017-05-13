@@ -3,10 +3,10 @@ import HomePage from './HomePage';
 import Home from './Home.js'
 import axios from 'axios';
 import {
-  // BrowserRouter as Router,
-  HashRouter as Router,
+  BrowserRouter as Router,
+  // HashRouter as Router,
   Route,
-  // browserHistory,
+  browserHistory,
   Redirect
   //Match
 } from 'react-router-dom'
@@ -77,7 +77,7 @@ class LogIn extends React.Component {
     //console.log(this.props.location, ' is this a refresh, or not')
     if(!this.props.location.success){
       return(
-        <Router>
+        <Router history={browserHistory}>
           <div>
             {console.log('def a work around, need figure out how to keep the state change persistent through a reload, or make this component not depend on the App.js component to render to homepage ')}
             <h5>Please Log In</h5>

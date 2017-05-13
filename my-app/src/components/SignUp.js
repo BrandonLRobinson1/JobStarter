@@ -3,10 +3,10 @@ import axios from 'axios';
 import LogIn from './LogIn';
 
 import {
-  // BrowserRouter as Router,
-  HashRouter as Router,
+  BrowserRouter as Router,
+  // HashRouter as Router,
   Route,
-  // browserHistory,
+  browserHistory,
   Redirect
   //Match
 } from 'react-router-dom'
@@ -85,9 +85,8 @@ class SignUp extends React.Component {
 
     if(this.state.goToLogIn){
       return(
-        <Router>
+        <Router history={browserHistory}>
           <div>
-            <h5>success please sign in</h5>
             <Redirect to="/LogIn" />
             <Route path="/LogIn" component={LogIn}/>
           </div>
