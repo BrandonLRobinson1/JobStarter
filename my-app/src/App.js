@@ -7,12 +7,12 @@ import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 
 import {
-  BrowserRouter as Router,
-  // HashRouter as Router,
+  // BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   //Link,
   NavLink,
-  browserHistory
+  // browserHistory
   //Match
 } from 'react-router-dom'
 
@@ -32,6 +32,7 @@ logginInSuccessful(){
 }
 
 render() {
+  console.log(this)
 
 if (this.state.loggedin){
     return(
@@ -39,7 +40,7 @@ if (this.state.loggedin){
       )
   } else {
   return (
-    <Router history={browserHistory}>
+    <Router>
       <div className="container">
         <ul className="nav">
           <li>

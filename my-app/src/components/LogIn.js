@@ -1,11 +1,12 @@
 import React from 'react';
 import HomePage from './HomePage';
+import Home from './Home.js'
 import axios from 'axios';
 import {
-  BrowserRouter as Router,
-  // HashRouter as Router,
+  // BrowserRouter as Router,
+  HashRouter as Router,
   Route,
-  browserHistory,
+  // browserHistory,
   Redirect
   //Match
 } from 'react-router-dom'
@@ -18,6 +19,10 @@ class LogIn extends React.Component {
       password: ''
     }
   }
+
+  // componentWillReceiveProps(){
+  //   this.location.success.key = 
+  // }
 
   sendInfo(event){
     //alert('A email was submitted: ' + this.state.email);
@@ -66,13 +71,25 @@ class LogIn extends React.Component {
 
 
   render() {
-
+    console.log(this.props)
+    //console.log(this.props.location.success)
     //console.log(location.pathname)
     //console.log(this.props.location, ' is this a refresh, or not')
-
+    if(!this.props.location.success){
+      return(
+        <Router>
+          <div>
+            {console.log('def a work around, need figure out how to keep the state change persistent through a reload, or make this component not depend on the App.js component to render to homepage ')}
+            <h5>Please Log In</h5>
+            <Redirect to="/"/>
+            <Route path="/Home"  component={Home}/>
+          </div>
+        </Router>
+        )    
+    }
     if(this.state.success){
       return(
-        <Router history={browserHistory}>
+        <Router>
           <div>
             <Redirect to="/Homepage" />
             <Route path="/HomePage"  component={HomePage}/>

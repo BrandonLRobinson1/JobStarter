@@ -7,7 +7,7 @@ class Home extends React.Component{
 
   render(){
     return (
-      <div className="App">hi</div>
+      <div className="App">Welcoming message followed by Please Log In</div>
     )
   }
 

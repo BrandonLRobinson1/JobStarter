@@ -1,3 +1,4 @@
+
 let express     = require('express');
 // let bcrypt      = require('bcrypt');
 let bodyParser  = require('body-parser');
@@ -32,10 +33,12 @@ app.use( function(req, res, next) {
   next();
 });
 
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
 app.use(express.static('public'));
 app.use(cookieParser('tell nobody'));
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use(flash());
 
 //parse application/json and look for raw text                                        
 app.use(bodyParser.json());                                     

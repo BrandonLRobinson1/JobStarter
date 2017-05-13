@@ -1,9 +1,12 @@
+
 // var app = require('../server');
 let bcrypt        = require('bcrypt');
 let passport      = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
 let User          = require('./testSchema.js');
 
+exports.passport;
+exports.LocalStrategy;
 
 exports.createUser = function(req, res){
   let email = req.body.email;
@@ -57,5 +60,3 @@ exports.verifyUser = function(req, res){
 
 }
 
-exports.passport;
-exports.LocalStrategy;
