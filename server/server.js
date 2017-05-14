@@ -1,22 +1,22 @@
 
-let express     = require('express');
-// let bcrypt      = require('bcrypt');
-let bodyParser  = require('body-parser');
-let cookieParser= require('cookie-parser');
-let session     = require('express-session');
-let request     = require('request');
-let db          = require('./db/db.js');
+let express          = require('express');
+// let bcrypt        = require('bcrypt');
+let bodyParser       = require('body-parser');
+let cookieParser     = require('cookie-parser');
+let session          = require('express-session');
+let request          = require('request');
+let db               = require('./db/db.js');
 //let router      = express.Router(); // <----- error says it requires callback
-let config      = require('config');
-let morgan      = require('morgan');
-var PORT        = 8888;
+let config           = require('config');
+let morgan           = require('morgan');
+var PORT             = 8888;
 // var PORT        = process.env.NODE_ENV || 8888;
 let jobStarterRouter =  require('./resources/jobStarterRouter.js');
 //passport
-let passport = require('passport')
-let LocalStrategy = require('passport-local').Strategy;
+let passport         = require('passport')
+let LocalStrategy    = require('passport-local').Strategy;
 
-let app         = express();
+let app              = express();
 
 // console.log('SUPPRESS_NO_CONFIG_WARNING: ' + config.util.getEnv('SUPPRESS_NO_CONFIG_WARNING'));
 // console.log(config.util.env)
@@ -33,7 +33,15 @@ app.use( function(req, res, next) {
   next();
 });
 
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ 
+  cookieName: 'jobStarter',
+  secret: 'ilovescotchscotchyscotchscotch',
+  resave: false,
+  saveUninitialized: false,
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000
+})); 
+
 app.use(express.static('public'));
 app.use(cookieParser('tell nobody'));
 app.use(passport.initialize());
@@ -48,7 +56,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use( jobStarterRouter );
 
-
 //don't show the log when it is test
 // console.log(config.util.getEnv('NODE_ENV'), 'node envyyy');
 if(config.util.getEnv('NODE_ENV') !== 'test') {
@@ -57,31 +64,6 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
     //use morgan to log at command line
     app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
 }
-
-
-// middlewear
-
-// passport.use(new LocalStrategy(
-//   function(username, password, done) {
-//     testing123.findOne({ username: username }, function(err, user) {
-//     // User.findOne({ username: username }, function(err, user) {
-//       if (err) { return done(err); }
-//       if (!user) {
-//         return done(null, false, { message: 'Incorrect username.' });
-//       }
-//       if (!user.validPassword(password)) {
-//         return done(null, false, { message: 'Incorrect password.' });
-//       }
-//       return done(null, user);
-//     });
-//   }
-// ));
-
-// app.post('/testing123',
-//   passport.authenticate('local', { successRedirect: '/',
-//                                    failureRedirect: '/login',
-//                                    failureFlash: true })
-// );
 
 
 app.listen( PORT, (err) => {

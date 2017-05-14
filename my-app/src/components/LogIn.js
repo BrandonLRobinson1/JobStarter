@@ -2,6 +2,7 @@ import React from 'react';
 import HomePage from './HomePage';
 import Home from './Home.js'
 import axios from 'axios';
+// import app from '../../../server/server.js';
 import {
   BrowserRouter as Router,
   // HashRouter as Router,
@@ -24,27 +25,27 @@ class LogIn extends React.Component {
   //   this.location.success.key = 
   // }
 
-  sendInfo(event){
-    //alert('A email was submitted: ' + this.state.email);
-    event.preventDefault();
+sendInfo(event){
+  //alert('A email was submitted: ' + this.state.email);
+  event.preventDefault();
 
-    axios.post( 'http://localhost:8888/login',
-      this.state
-    )
-    .then( data => {
-      console.log('login succesful');
-      console.log(data);
-      this.props.location.success.key();
-    } )
-    .catch( err => {
-       if (err) console.log( err );
-       alert('username or password incorrect');
-       this.setState({
-        email: '',
-        password: ''
-      });
-    });  
-  }
+  axios.post( 'http://localhost:8888/login',
+    this.state
+  )
+  .then( data => {
+    console.log('login succesful');
+    console.log(data);
+    this.props.location.success.key();
+  } )
+  .catch( err => {
+     if (err) console.log( err );
+     alert('username or password incorrect');
+     this.setState({
+      email: '',
+      password: ''
+    });
+  });  
+}
 
   onChange(event) {
     event.preventDefault();
@@ -72,14 +73,13 @@ class LogIn extends React.Component {
 
   render() {
     console.log(this.props)
-    //console.log(this.props.location.success)
     //console.log(location.pathname)
     //console.log(this.props.location, ' is this a refresh, or not')
     if(!this.props.location.success){
       return(
         <Router history={browserHistory}>
           <div>
-            {console.log('def a work around, need figure out how to keep the state change persistent through a reload, or make this component not depend on the App.js component to render to homepage ')}
+            {console.log('def a work around, need figure out how to keep the state change persistent through a reload, or make this component not depend on the App.js component to render to homepage ==> also can make this a one page react file ')}
             <h5>Please Log In</h5>
             <Redirect to="/"/>
             <Route path="/Home"  component={Home}/>

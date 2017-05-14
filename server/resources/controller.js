@@ -3,7 +3,11 @@
 let bcrypt        = require('bcrypt');
 let passport      = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
-let User          = require('./testSchema.js');
+let User          = require('./testSchema');
+let app           = require('../server');
+
+console.log(app, ' its ok')
+
 
 exports.passport;
 exports.LocalStrategy;
@@ -39,7 +43,6 @@ exports.createUser = function(req, res){
 exports.verifyUser = function(req, res){
   let email = req.body.email;
   let password = req.body.password;
-
   //insert session or passport
 
   User.findOne({email: email}, (err, user)=>{
@@ -49,6 +52,8 @@ exports.verifyUser = function(req, res){
     bcrypt.compare(password, user.password, function(err, response) {
       //response is true if and only if passwords match
       if (response) {
+        req.session.user = user;
+        console.log(req.session, ' the sessh')
         res.status(201).send(user);
       } else {
         res.status(400).send('username or password incorrect');

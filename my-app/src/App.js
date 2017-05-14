@@ -36,7 +36,7 @@ render() {
 
 if (this.state.loggedin){
     return(
-      <div>Main page with new navigation</div>
+      <div>Main page with new navigation(create logout button) see if you can make nav below a component, then clean everything up</div>
       )
   } else {
   return (

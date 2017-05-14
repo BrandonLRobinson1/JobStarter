@@ -7,7 +7,7 @@ class HomePage extends React.Component{
 
   render(){
     return (
-      <div className="App">hieeee</div>
+      <div className="App">hieeee (create logout button)</div>
     )
   }
 
