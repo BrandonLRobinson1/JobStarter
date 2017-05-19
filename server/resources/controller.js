@@ -56,7 +56,8 @@ exports.verifyUser = function(req, res){
         console.log(req.session, ' the sessh')
         res.status(201).send(user);
       } else {
-        res.status(400).send('username or password incorrect');
+        res.redirect('http://www.google.com')
+
       }
 
     });
