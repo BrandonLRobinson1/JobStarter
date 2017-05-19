@@ -13,13 +13,6 @@ import {
 } from 'react-router-dom'
 
 class LogIn extends React.Component {
-  constructor( props ){
-    super( props );
-    this.state = {
-      email: '',
-      password: ''
-    }
-  }
 
   // componentWillReceiveProps(){
   //   this.location.success.key = 
@@ -89,4 +82,4 @@ sendInfo(event){
 export default LogIn;
 
 // <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
-          // <input type='password' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
+// <input type='password' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>

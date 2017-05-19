@@ -1,5 +1,5 @@
 import React from 'react';
-// import './App.css';
+import './App.css';
 // import axios from 'axios';
 
 // import Home from './components/Home';
@@ -22,8 +22,8 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      loginCredentials: {},
-      personalInfo: {}
+      signedIn: false,
+      userInfo: {}
       //should pass the state back to main APP when signed in so you can personalize and add to ux, also reload would automatically work i believe
     }
 }

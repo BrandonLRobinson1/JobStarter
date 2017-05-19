@@ -13,6 +13,10 @@ import {
 
 class SignUp extends React.Component {
 
+  SignUpField() {
+    console.log(this.inputEmail.value)
+  }
+
   sendInfo(event){
 
     event.preventDefault();
@@ -67,9 +71,9 @@ class SignUp extends React.Component {
     return (
       <div className="App">
         Sign In
-        <form onSubmit='hi'>
-          <input type='text' placeholder='email' className="inputEmail" onChange='hi' value='hi' required></input>
-          <input type='text' placeholder='password' className="inputPasswird" onChange='hi'  value='hi' required></input>
+        <form onSubmit={ (e)=>{this.SignUpField(e)} }>
+          <input type='text' placeholder='email' className="inputEmail" onChange='hi' value='hi' ref={ (input) => { this.inputEmail = input } } required></input>
+          <input type='password' placeholder='password' className="inputPasswird" onChange='hi'  value='hi' ref={ (input) => { this.inputPW = input } } required></input>
           <input type='submit' value='Test'></input>
         </form>  
       </div>
@@ -80,4 +84,4 @@ class SignUp extends React.Component {
 export default SignUp;
 
 // <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
-          // <input type='password' minLength='5' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
+// <input type='password' minLength='5' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
