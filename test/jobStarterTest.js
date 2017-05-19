@@ -7,7 +7,7 @@ let should      = chai.should();
 
 chai.use(chaiHttp);
 
-describe( 'Persons', ()=>{
+describe( 'new user', ()=>{
   it('test user should be created', done => {
     data = {
       email: 'Sammy@aol.com',
