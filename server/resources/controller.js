@@ -30,7 +30,7 @@ exports.createUser = function(req, res){
       newUser.save( function(err, newuser){
         if (err) console.log(err);
         console.log(newuser, ' succesful save');
-        res.status(200).send(newUser);
+        res.status(201).send(newUser);
       } );
     } else {
       console.log('already created');

@@ -10,14 +10,14 @@ chai.use(chaiHttp);
 describe( 'new user', ()=>{
   it('test user should be created', done => {
     data = {
-      email: 'Sammy@aol.com',
-      password: 'xxx'
+      email: `S${Math.random()}@aol.com`,
+      pw: 'xxx'
     }
     chai.request(server)
-      .post('/test123') //only add route**
+      .post('/signup') //only add route**
       .send( data )
       .end( (err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(201);
         res.body.should.be.a('object');
         done();
       } );

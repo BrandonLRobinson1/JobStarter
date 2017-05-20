@@ -1,15 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-// import LogIn from './LogIn';
-
-import {
-  // BrowserRouter as Router,
-  // HashRouter as Router,
-  // Route,
-  // browserHistory,
-  // Redirect
-  //Match
-} from 'react-router-dom'
 
 class SignUp extends React.Component {
 
@@ -28,30 +17,6 @@ class SignUp extends React.Component {
     this.SignUpForm.reset();
   }
 
-  // sendInfo(event){
-
-  //   event.preventDefault();
-  //   let that = this;
-
-  //   axios.post( 'http://localhost:8888/signup',
-  //     this.state
-  //   )
-  //   .then( data => {
-  //     console.log('axios sent');
-  //     // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
-  //     that.readyForLogIn();
-  //   } )
-  //   .catch( err => {
-  //     if (err) console.log( err );
-  //     // alert('username already in use');
-  //     this.setState({
-  //       email: '',
-  //       password: ''
-  //     });
-  //     // reload page with err message ONCE reload is working <=========
-  //   } );
-
-  // }
 
   render() {
     console.log(this.props, ' props on signup zaddyt')
@@ -69,6 +34,6 @@ class SignUp extends React.Component {
 }
 
 export default SignUp;
-
+// final form credentials
 // <input type='email' placeholder='email' className="inputEmail" ></input>
 // <input type='password' minLength='5' placeholder='password' className="inputPasswird" required></input>

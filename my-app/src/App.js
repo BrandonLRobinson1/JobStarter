@@ -31,14 +31,8 @@ class App extends React.Component {
       // loggedIn: false,
       // userInfo: {}
     }
-
 }
 
-// logginInSuccessful(){
-//   this.setState({
-//     loggedin: true
-//   })
-// }
 
   userSignUp( userCredentials ){
     console.log(userCredentials);
@@ -47,7 +41,7 @@ class App extends React.Component {
       userCredentials
     )
     .then( data => {
-      console.log('axios sent');
+      console.log('user created');
       // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
     } )
     .catch( err => {
@@ -60,29 +54,6 @@ class App extends React.Component {
       // reload page with err message ONCE reload is working <=========
     } );
   }
-
-  // sendInfo(event){
-
-
-    // axios.post( 'http://localhost:8888/signup',
-    //   this.state
-    // )
-    // .then( data => {
-    //   console.log('axios sent');
-    //   // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
-    //   that.readyForLogIn();
-    // } )
-    // .catch( err => {
-    //   if (err) console.log( err );
-    //   alert('username already in use');
-    //   this.setState({
-    //     email: '',
-    //     password: ''
-    //   });
-    //   // reload page with err message ONCE reload is working <=========
-    // } );
-
-  // }
 
   userLogIn( userCredentials ){
     console.log(userCredentials);
@@ -101,30 +72,7 @@ class App extends React.Component {
     //   password: ''
     // });
   });  
-
-  }
-
-//   LogInInfo(event){
-//   //alert('A email was submitted: ' + this.state.email);
-//   event.preventDefault();
-
-//   axios.post( 'http://localhost:8888/login',
-//     this.state
-//   )
-//   .then( data => {
-//     console.log('login succesful');
-//     console.log(data);
-//     this.props.location.success.key();
-//   } )
-//   .catch( err => {
-//      if (err) console.log( err );
-//      alert('username or password incorrect');
-//      this.setState({
-//       email: '',
-//       password: ''
-//     });
-//   });  
-// }
+}
 
 render() {
 
@@ -134,7 +82,7 @@ render() {
         <Footer />
       </div>
     )
-} 
+  } 
 }
 
 export default App;
