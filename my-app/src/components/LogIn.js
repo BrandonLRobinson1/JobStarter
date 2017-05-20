@@ -14,9 +14,17 @@ import {
 
 class LogIn extends React.Component {
 
-  // componentWillReceiveProps(){
-  //   this.location.success.key = 
-  // }
+LogInFields(event){
+  event.preventDefault();
+
+  console.log('LogInInfo working');
+  const LogInInfo = {
+    email: this.inputEmail.value,
+    pw: this.inputPw.value
+  }
+
+  this.props.location.userLogIn.userLogIn(LogInInfo);
+}
 
 sendInfo(event){
   //alert('A email was submitted: ' + this.state.email);
@@ -69,9 +77,9 @@ sendInfo(event){
     return (
       <div className="App">
         Log In
-        <form>
-          <input type='text' placeholder='email' className="inputEmail" onChange='hi' value='hi' required></input>
-          <input type='text' placeholder='password' className="inputPasswird" onChange='hi'  value='hi' required></input>
+        <form onSubmit={ (e)=>{this.LogInFields(e)} }>
+          <input type='text' placeholder='email' className="inputEmail" ref={ (input) => {this.inputEmail = input} } required></input>
+          <input type='text' placeholder='password' className="inputPasswird"  ref={ (input) => {this.inputPw = input} } required></input>
           <input type='submit' value='Test'></input>
         </form>  
       </div>

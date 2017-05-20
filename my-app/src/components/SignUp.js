@@ -13,7 +13,7 @@ import {
 
 class SignUp extends React.Component {
 
-  SignUpField(event) {
+  SignUpFields(event) {
     event.preventDefault();
 
     console.log('SignUpField working')
@@ -56,7 +56,7 @@ class SignUp extends React.Component {
     return (
       <div className="App">
         Sign In
-        <form onSubmit={ (e)=>{this.SignUpField(e)} }>
+        <form onSubmit={ (e)=>{this.SignUpFields(e)} }>
           <input type='text' placeholder='email' className="inputEmail" ref={ (input) => { this.inputEmail = input } } required></input>
           <input type='password' placeholder='password' className="inputPasswird" ref={ (input) => { this.inputPW = input } } required></input>
           <input type='submit' value='Test'></input>

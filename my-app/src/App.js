@@ -43,14 +43,14 @@ class App extends React.Component {
   }
 
   userLogIn( userCredentials ){
-    // const loggedIn = this.state.loggedIn; 
+    console.log(userCredentials);
   }
 
 render() {
 
   return (
       <div className="container">
-        <NavBar userSignUp={this.userSignUp}/>
+        <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
         <Footer />
       </div>
     )
@@ -59,6 +59,3 @@ render() {
 
 export default App;
 
-//        <LogIn value={this.state.loggedin} verified={this.logginInSuccessful.bind(this)}/>
-          // <NavLink activeClassName='active' to={{pathname:"/LogIn", state:{ fromDashboard: this.state.loggedin } }} >
-// , success: {key1:this.logginInSuccessful.bind(this)}
