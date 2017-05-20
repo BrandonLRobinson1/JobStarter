@@ -13,9 +13,10 @@ exports.passport;
 exports.LocalStrategy;
 
 exports.createUser = function(req, res){
+
   let email = req.body.email;
   // let salt = bcrypt.genSaltSync(10);
-  let hash = bcrypt.hashSync(req.body.password, 10); // no need to use salt can jst replace it with ten
+  let hash = bcrypt.hashSync(req.body.pw, 10); // no need to use salt can jst replace it with ten
 
   let newUser = new User( {
     email: email,
@@ -26,10 +27,9 @@ exports.createUser = function(req, res){
     if (err) { return handleError(err) } 
     
     if (!user) {
-      //console.log('heres where we create')
       newUser.save( function(err, newuser){
-        if (err) console.log(err)
-        console.log(newuser);
+        if (err) console.log(err);
+        console.log(newuser, ' succesful save');
         res.status(201).send(newUser);
       } );
     } else {
@@ -37,12 +37,12 @@ exports.createUser = function(req, res){
       res.status(400).send('user already exists');
     }
   });
-  
 };
 
 exports.verifyUser = function(req, res){
+
   let email = req.body.email;
-  let password = req.body.password;
+  let password = req.body.pw;
   //insert session or passport
 
   User.findOne({email: email}, (err, user)=>{
@@ -56,7 +56,7 @@ exports.verifyUser = function(req, res){
         console.log(req.session, ' the sessh')
         res.status(201).send(user);
       } else {
-        res.redirect('http://www.google.com')
+        res.status(400).send('username or pw is not correct');
 
       }
 

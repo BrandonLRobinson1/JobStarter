@@ -16,37 +16,39 @@ class LogIn extends React.Component {
 
 LogInFields(event){
   event.preventDefault();
-
   console.log('LogInInfo working');
+  //using refs in line 83 and 84 to grab inputs
   const LogInInfo = {
     email: this.inputEmail.value,
     pw: this.inputPw.value
   }
 
   this.props.location.userLogIn.userLogIn(LogInInfo);
+  //using ref on line to reset fields
+  this.LogInForm.reset();
 }
 
-sendInfo(event){
-  //alert('A email was submitted: ' + this.state.email);
-  event.preventDefault();
+// sendInfo(event){
+//   //alert('A email was submitted: ' + this.state.email);
+//   event.preventDefault();
 
-  axios.post( 'http://localhost:8888/login',
-    this.state
-  )
-  .then( data => {
-    console.log('login succesful');
-    console.log(data);
-    this.props.location.success.key();
-  } )
-  .catch( err => {
-     if (err) console.log( err );
-     alert('username or password incorrect');
-     this.setState({
-      email: '',
-      password: ''
-    });
-  });  
-}
+//   axios.post( 'http://localhost:8888/login',
+//     this.state
+//   )
+//   .then( data => {
+//     console.log('login succesful');
+//     console.log(data);
+//     this.props.location.success.key();
+//   } )
+//   .catch( err => {
+//      if (err) console.log( err );
+//      alert('username or password incorrect');
+//      this.setState({
+//       email: '',
+//       password: ''
+//     });
+//   });  
+// }
 
   // onChange(event) {
   //   event.preventDefault();
@@ -77,7 +79,7 @@ sendInfo(event){
     return (
       <div className="App">
         Log In
-        <form onSubmit={ (e)=>{this.LogInFields(e)} }>
+        <form ref={ (input)=>{this.LogInForm = input} } onSubmit={ (e)=>{this.LogInFields(e)} } >
           <input type='text' placeholder='email' className="inputEmail" ref={ (input) => {this.inputEmail = input} } required></input>
           <input type='text' placeholder='password' className="inputPasswird"  ref={ (input) => {this.inputPw = input} } required></input>
           <input type='submit' value='Test'></input>
@@ -89,5 +91,5 @@ sendInfo(event){
 
 export default LogIn;
 
-// <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
-// <input type='password' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
+// <input type='email' placeholder='email' className="inputEmail"  required></input>
+// <input type='password' placeholder='password' className="inputPasswird" required></input>
