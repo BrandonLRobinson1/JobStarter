@@ -15,7 +15,6 @@ import {
 
 
 const Root = () => {
-  console.log(browserHistory, 'browserHistory')
   return(
     <Router history={browserHistory}>
       <div>

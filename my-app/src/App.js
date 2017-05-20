@@ -19,13 +19,17 @@ import Footer from './components/Footer';
 // } from 'react-router-dom'
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
+
+    this.userSignUp = this.userSignUp.bind(this);
+    this.userLogIn = this.userLogIn.bind(this);
+
     this.state = {
-      signedIn: false,
-      userInfo: {}
-      //should pass the state back to main APP when signed in so you can personalize and add to ux, also reload would automatically work i believe
+      // loggedIn: false,
+      // userInfo: {}
     }
+
 }
 
 // logginInSuccessful(){
@@ -34,11 +38,19 @@ class App extends React.Component {
 //   })
 // }
 
+  userSignUp( userCredentials ){
+    console.log(userCredentials)
+  }
+
+  userLogIn( userCredentials ){
+    // const loggedIn = this.state.loggedIn; 
+  }
+
 render() {
 
   return (
       <div className="container">
-        <NavBar />
+        <NavBar userSignUp={this.userSignUp}/>
         <Footer />
       </div>
     )

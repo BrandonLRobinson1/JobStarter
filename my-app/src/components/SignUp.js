@@ -13,8 +13,17 @@ import {
 
 class SignUp extends React.Component {
 
-  SignUpField() {
-    console.log(this.inputEmail.value)
+  SignUpField(event) {
+    event.preventDefault();
+
+    console.log('SignUpField working')
+
+    const SignUp = {
+     email: this.inputEmail.value,
+     pw: this.inputPW.value
+    }
+
+    this.props.location.userSignUp.userSignUp( SignUp );
   }
 
   sendInfo(event){
@@ -42,38 +51,14 @@ class SignUp extends React.Component {
 
   }
 
-  // onChange(event) {
-  //   event.preventDefault();
-  //   var state = this.state; // will even work with nested state
-
-  //   // works but if i need to adjust size of form beyond two fields it wont work
-  //   //event.target.placeholder === 'email' ? state.email = event.target.value : state.password = event.target.value
-
-  //   if (event.target.placeholder === 'email') {
-  //     state.email = event.target.value
-  //     this.setState({
-  //     email: state.email,
-  //   })
-
-  //   }
-  //   if (event.target.placeholder === 'password') {
-  //     state.password = event.target.value
-  //     this.setState({
-  //     password: state.password //Number(state.password) // password must be a string
-  //   })
-  //   }
-
-  // }
-
-
   render() {
-
+    console.log(this.props, ' props on signup zaddyt')
     return (
       <div className="App">
         Sign In
         <form onSubmit={ (e)=>{this.SignUpField(e)} }>
-          <input type='text' placeholder='email' className="inputEmail" onChange='hi' value='hi' ref={ (input) => { this.inputEmail = input } } required></input>
-          <input type='password' placeholder='password' className="inputPasswird" onChange='hi'  value='hi' ref={ (input) => { this.inputPW = input } } required></input>
+          <input type='text' placeholder='email' className="inputEmail" ref={ (input) => { this.inputEmail = input } } required></input>
+          <input type='password' placeholder='password' className="inputPasswird" ref={ (input) => { this.inputPW = input } } required></input>
           <input type='submit' value='Test'></input>
         </form>  
       </div>
@@ -83,5 +68,5 @@ class SignUp extends React.Component {
 
 export default SignUp;
 
-// <input type='email' placeholder='email' className="inputEmail" onChange={ this.onChange.bind(this) } value={ this.state.email } required></input>
-// <input type='password' minLength='5' placeholder='password' className="inputPasswird" onChange={ this.onChange.bind(this) }  value={ this.state.password } required></input>
+// <input type='email' placeholder='email' className="inputEmail" ></input>
+// <input type='password' minLength='5' placeholder='password' className="inputPasswird" required></input>

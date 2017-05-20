@@ -69,7 +69,7 @@ sendInfo(event){
     return (
       <div className="App">
         Log In
-        <form onSubmit='hi'>
+        <form>
           <input type='text' placeholder='email' className="inputEmail" onChange='hi' value='hi' required></input>
           <input type='text' placeholder='password' className="inputPasswird" onChange='hi'  value='hi' required></input>
           <input type='submit' value='Test'></input>
