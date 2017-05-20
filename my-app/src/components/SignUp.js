@@ -1,4 +1,5 @@
 import React from 'react';
+// import '../App.css';
 
 class SignUp extends React.Component {
 
@@ -21,7 +22,7 @@ class SignUp extends React.Component {
   render() {
     console.log(this.props, ' props on signup zaddyt')
     return (
-      <div className="App">
+      <div className="App form">
         Sign In
         <form ref={ (input)=>{this.SignUpForm = input}} onSubmit={ (e)=>{this.SignUpFields(e)} }>
           <input type='text' placeholder='email' className="inputEmail" ref={ (input) => { this.inputEmail = input } } required></input>

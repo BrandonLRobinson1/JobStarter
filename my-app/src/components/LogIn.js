@@ -1,4 +1,6 @@
 import React from 'react';
+// import './App.css';
+
 
 class LogIn extends React.Component {
 
@@ -19,7 +21,7 @@ LogInFields(event){
   render() {
 
     return (
-      <div className="App">
+      <div className="App form">
         Log In
         <form ref={ (input)=>{this.LogInForm = input} } onSubmit={ (e)=>{this.LogInFields(e)} } >
           <input type='text' placeholder='email' className="inputEmail" ref={ (input) => {this.inputEmail = input} } required></input>
