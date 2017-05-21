@@ -36,7 +36,7 @@ class App extends React.Component {
 }
 
   componentWillMount(){
-    this.ref = base.syncState(`${this.props.location.pathname}`, {
+    this.ref = base.syncState(`${this.props.location.pathname}/loggedIn`, {
       context: this,
       state: 'loggedIn'
     });
@@ -49,7 +49,7 @@ class App extends React.Component {
   testFireBase(){
     console.log('sayyy whaaaa')
     this.setState({
-      loggedIn: false
+      loggedIn: !this.state.loggedIn
     })
   }
 
