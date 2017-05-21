@@ -5,6 +5,7 @@ import axios from 'axios';
 // import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import base from './firebase/base';
 // import LogIn from './components/LogIn';
 // import SignUp from './components/SignUp';
 
@@ -23,16 +24,34 @@ class App extends React.Component {
     super();
 
     // this.xx = this.xx.bind(this);
+    this.testFireBase = this.testFireBase.bind(this);
     this.userSignUp = this.userSignUp.bind(this);
     this.userLogIn = this.userLogIn.bind(this);
 
 
     this.state = {
-      // loggedIn: false,
+      loggedIn: false
       // userInfo: {}
-    }
+    };
 }
 
+  componentWillMount(){
+    this.ref = base.syncState(`${this.props.location.pathname}`, {
+      context: this,
+      state: 'loggedIn'
+    });
+  }
+
+  componentWillUnmount(){
+    base.removeBinding(this.ref);
+  }
+
+  testFireBase(){
+    console.log('sayyy whaaaa')
+    this.setState({
+      loggedIn: false
+    })
+  }
 
   userSignUp( userCredentials ){
     console.log(userCredentials);
@@ -80,6 +99,7 @@ render() {
       <div className="container">
         <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
         <Footer />
+        <button onClick={this.testFireBase}>testFIAAAA</button>
       </div>
     )
   } 
