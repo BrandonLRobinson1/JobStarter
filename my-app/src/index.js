@@ -17,7 +17,7 @@ const Root = () => {
     <Router>
       <div>
         <Route exactly path="/" component={App} />
-        <Route path="/home" component={App} />
+         {/*<Route path="/home" component={App} />*/}
         {/*<Royte path="/HomePage/:user" component={App}*/}
       {/* need to handle page not found */}
       </div>

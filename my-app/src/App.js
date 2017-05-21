@@ -35,12 +35,18 @@ class App extends React.Component {
     };
 }
 
-  // before things mount, sync with firebase
+  // runs before things mount/are rendered, sync with firebase
   componentWillMount(){
+    //check firebase
     this.ref = base.syncState(`${this.props.location.pathname}/loggedIn`, {
       context: this,
       state: 'loggedIn'
     });
+
+    // check if there is anything in localStorage
+    const locatStorageRef = localStorage.getItem(`${this.props.location.pathname}`);
+    // update state
+    locatStorageRef ? this.setState({ loggedIn: JSON.parse(locatStorageRef)}) : console.log('nothing in local storage');
   }
 
   // unsync with firebase when unmounting
@@ -57,7 +63,7 @@ class App extends React.Component {
     // localStorage.setItem(`yo`, !this.state.loggedIn);
 
     // notes - can only store stings or numbers in the local storage so stringify
-    localStorage.setItem(`${this.props.location.pathname}`, JSON.stringify(nextState.loggedIn));
+    localStorage.setItem(`${this.props.locationx.pathname}`, JSON.stringify(nextState.loggedIn));
 
   }
 
@@ -98,6 +104,7 @@ class App extends React.Component {
     )
   .then( data => {
     console.log('login succesful');
+    //set state and trigger a new render
      } )
   .catch( err => {
      if (err) console.log( err );
