@@ -35,6 +35,7 @@ class App extends React.Component {
     };
 }
 
+  // before things mount, sync with firebase
   componentWillMount(){
     this.ref = base.syncState(`${this.props.location.pathname}/loggedIn`, {
       context: this,
@@ -42,10 +43,25 @@ class App extends React.Component {
     });
   }
 
+  // unsync with firebase when unmounting
   componentWillUnmount(){
     base.removeBinding(this.ref);
   }
 
+  // runs whenever props or state changes
+  // arguments are updated props and updated state
+  componentWillUpdate(nextProps, nextState){
+    //test componentWillUpdate activates on change
+    // console.log('something changed')
+    // console.log({nextProps, nextState});
+    // localStorage.setItem(`yo`, !this.state.loggedIn);
+
+    // notes - can only store stings or numbers in the local storage so stringify
+    localStorage.setItem(`${this.props.location.pathname}`, JSON.stringify(nextState.loggedIn));
+
+  }
+
+  // a test that firebase is working
   testFireBase(){
     console.log('sayyy whaaaa')
     this.setState({
