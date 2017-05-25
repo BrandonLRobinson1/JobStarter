@@ -2,6 +2,8 @@ import React from 'react';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
 import Home from './Home';
+import PropTypes from 'prop-types';
+
 // import '../App.css';
 
 import {
@@ -31,6 +33,11 @@ class NavBar extends React.Component{
       </span>  
     )
   }
+}
+
+NavBar.propTypes = {
+  userSignUp: PropTypes.func.isRequired,
+  userLogIn: PropTypes.func.isRequired
 }
 
 export default NavBar

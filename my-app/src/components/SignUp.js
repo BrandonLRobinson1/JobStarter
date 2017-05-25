@@ -2,8 +2,13 @@ import React from 'react';
 // import '../App.css';
 
 class SignUp extends React.Component {
+  constructor(){
+    super();
 
-  SignUpFields(event) {
+    this.SignUpFields = this.signUpFields.bind(this);
+  }
+
+  signUpFields(event) {
     event.preventDefault();
 
     console.log('SignUpField working')
@@ -24,7 +29,7 @@ class SignUp extends React.Component {
     return (
       <div className="App form">
         Sign In
-        <form ref={ (input)=>{this.SignUpForm = input}} onSubmit={ (e)=>{this.SignUpFields(e)} }>
+        <form ref={ (input)=>{this.SignUpForm = input}} onSubmit={ (e)=>{this.signUpFields(e)} }>
           <input type='text' placeholder='email' className="inputEmail" ref={ (input) => { this.inputEmail = input } } required></input>
           <input type='password' placeholder='password' className="inputPasswird" ref={ (input) => { this.inputPW = input } } required></input>
           <input type='submit' value='Test'></input>

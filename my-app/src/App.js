@@ -63,7 +63,7 @@ class App extends React.Component {
     // localStorage.setItem(`yo`, !this.state.loggedIn);
 
     // notes - can only store stings or numbers in the local storage so stringify
-    localStorage.setItem(`${this.props.locationx.pathname}`, JSON.stringify(nextState.loggedIn));
+    localStorage.setItem(`${this.props.location.pathname}`, JSON.stringify(nextState.loggedIn));
 
   }
 

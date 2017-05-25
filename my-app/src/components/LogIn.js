@@ -3,8 +3,13 @@ import React from 'react';
 
 
 class LogIn extends React.Component {
+  constructor(){
+    super();
 
-LogInFields(event){
+    this.logInFields = this.logInFields.bind(this);
+  }
+
+logInFields(event){
   event.preventDefault();
   console.log('LogInInfo working');
   //using refs in line 83 and 84 to grab inputs
@@ -23,7 +28,7 @@ LogInFields(event){
     return (
       <div className="App form">
         Log In
-        <form ref={ (input)=>{this.LogInForm = input} } onSubmit={ (e)=>{this.LogInFields(e)} } >
+        <form ref={ (input)=>{this.LogInForm = input} } onSubmit={ (e)=>{this.logInFields(e)} } >
           <input type='text' placeholder='email' className="inputEmail" ref={ (input) => {this.inputEmail = input} } required></input>
           <input type='text' placeholder='password' className="inputPasswird"  ref={ (input) => {this.inputPw = input} } required></input>
           <input type='submit' value='Test'></input>
