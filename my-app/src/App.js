@@ -5,6 +5,7 @@ import axios from 'axios';
 // import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import Welcome from './components/Welcome'
 import base from './firebase/base';
 // import LogIn from './components/LogIn';
 // import SignUp from './components/SignUp';
@@ -63,8 +64,8 @@ class App extends React.Component {
     // localStorage.setItem(`yo`, !this.state.loggedIn);
 
     // notes - can only store stings or numbers in the local storage so stringify
+    
     localStorage.setItem(`${this.props.location.pathname}`, JSON.stringify(nextState.loggedIn));
-
   }
 
   // a test that firebase is working
@@ -104,6 +105,10 @@ class App extends React.Component {
     )
   .then( data => {
     console.log('login succesful');
+    const stateDuplicate = this.state.loggedIn;
+    this.setState({
+      loggedIn: true
+    });
     //set state and trigger a new render
      } )
   .catch( err => {
@@ -117,14 +122,22 @@ class App extends React.Component {
 }
 
 render() {
-
-  return (
-      <div className="container">
-        <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
-        <Footer />
-        <button onClick={this.testFireBase}>testFIAAAA</button>
-      </div>
-    )
+    if (!this.state.loggedIn){
+      return (
+          <div className="container">
+            <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
+            <Footer />
+            <button onClick={this.testFireBase}>testFIAAAA</button>
+          </div>
+        )
+    } else {
+      return (
+        <div className="container">
+          <Welcome />
+        </div>
+        )
+    }
+    
   } 
 }
 
