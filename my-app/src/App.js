@@ -11,13 +11,13 @@ import base from './firebase/base';
 // import SignUp from './components/SignUp';
 
 // import {
-//   // BrowserRouter as Router,
-//   // HashRouter as Router,
-//   Route,
-//   //Link,
-//   NavLink,
-//   // browserHistory
-//   //Match
+// //   // BrowserRouter as Router,
+// //   // HashRouter as Router,
+// //   Route,
+// //   //Link,
+// //   NavLink,
+//   BrowserHistory
+// //   //Match
 // } from 'react-router-dom'
 
 class App extends React.Component {
@@ -29,10 +29,10 @@ class App extends React.Component {
     this.userSignUp = this.userSignUp.bind(this);
     this.userLogIn = this.userLogIn.bind(this);
 
-
     this.state = {
-      loggedIn: false
-      // userInfo: {}
+      loggedIn: false,
+      newSignUp: false,
+      userInfo: {}
     };
 }
 
@@ -70,7 +70,7 @@ class App extends React.Component {
 
   // a test that firebase is working
   testFireBase(){
-    console.log('sayyy whaaaa')
+    console.log('sayyy whaaaa', this.state.loggedIn)
     this.setState({
       loggedIn: !this.state.loggedIn
     })
@@ -84,6 +84,9 @@ class App extends React.Component {
     )
     .then( data => {
       console.log('user created');
+      this.setState({
+        newSignUp: true
+      });
       // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
     } )
     .catch( err => {
@@ -105,7 +108,7 @@ class App extends React.Component {
     )
   .then( data => {
     console.log('login succesful');
-    const stateDuplicate = this.state.loggedIn;
+    // const stateDuplicate = this.state.loggedIn;
     this.setState({
       loggedIn: true
     });
@@ -122,7 +125,17 @@ class App extends React.Component {
 }
 
 render() {
-    if (!this.state.loggedIn){
+    let loggedIn = this.state.loggedIn;
+    let newSignUp = this.state.newSignUp;
+
+    // paths
+    //if loggedin AND newsignp are false render origial
+
+    //if new sign up is true, render info gather, then route real home by setting logged in to true and signed in to false
+ 
+    // if logged in is true, render new everythign including nav
+
+    if(!loggedIn && !newSignUp)
       return (
           <div className="container">
             <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
@@ -130,12 +143,17 @@ render() {
             <button onClick={this.testFireBase}>testFIAAAA</button>
           </div>
         )
-    } else {
+
+    if (!loggedIn && newSignUp){
       return (
         <div className="container">
-          <Welcome />
+          <Welcome mainState={this.state}/>
         </div>
-        )
+      )
+
+    // if (loggedIn){
+    //   console.log('$$$$');
+    // }
     }
     
   } 
