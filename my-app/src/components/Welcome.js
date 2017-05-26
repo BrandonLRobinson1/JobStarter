@@ -34,8 +34,8 @@ class Welcome extends React.Component {
       return(
         <div>
           <h1>some other text</h1>
-          <h4>cool suave wording</h4>
-          <SignUpForm mainState={this.props.mainState} />
+          <h4>youll only have to do this once</h4>
+          <SignUpForm path="/signUpForm" mainState={this.props.mainState} />
         </div>
       )  
     }

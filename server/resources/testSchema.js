@@ -6,12 +6,12 @@ var userSchema = mongoose.Schema({
     userInfo: {
       name: String,
       address: String,
+      address2: String,
       relocation: Boolean,
       age: Number,
       phone: Number,
       resume: String,
       coverLetter: String,
-      fit: String,
       linkedIn: String,
       gitHub: String,
       authorized: Boolean,

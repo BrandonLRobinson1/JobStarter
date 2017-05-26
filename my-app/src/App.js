@@ -32,7 +32,23 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       newSignUp: false,
-      userInfo: {}
+      userInfo: {
+        name: '',
+        address: '',
+        relocation: '',
+        age: '',
+        phone: '',
+        resume: '',
+        coverLetter: '',
+        linkedIn: '',
+        gitHub: '',
+        authorized: '',
+        disability: '',
+        gender: '',
+        race: '',
+        veteran: '',
+        linkToVideo: ''
+      }
     };
 }
 
@@ -135,18 +151,10 @@ render() {
  
     // if logged in is true, render new everythign including nav
 
-    if(!loggedIn && !newSignUp)
+    // if(!loggedIn && !newSignUp)
       return (
           <div className="container">
-            <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
-            <Footer />
-            <button onClick={this.testFireBase}>testFIAAAA</button>
-          </div>
-        )
-
-    if (!loggedIn && newSignUp){
-      return (
-        <div className="container">
+           
           <Welcome mainState={this.state}/>
         </div>
       )
@@ -157,7 +165,43 @@ render() {
     }
     
   } 
-}
 
-export default App;
 
+export default App
+
+// render() {
+//     let loggedIn = this.state.loggedIn;
+//     let newSignUp = this.state.newSignUp;
+
+//     // paths
+//     //if loggedin AND newsignp are false render origial
+
+//     //if new sign up is true, render info gather, then route real home by setting logged in to true and signed in to false
+ 
+//     // if logged in is true, render new everythign including nav
+
+//     if(!loggedIn && !newSignUp)
+//       return (
+//           <div className="container">
+//             <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
+//             <Footer />
+//             <button onClick={this.testFireBase}>testFIAAAA</button>
+//           </div>
+//         )
+
+//     if (!loggedIn && newSignUp){
+//       return (
+//         <div className="container">
+//           <Welcome mainState={this.state}/>
+//         </div>
+//       )
+
+//     // if (loggedIn){
+//     //   console.log('$$$$');
+//     // }
+//     }
+    
+//   } 
+// }
+
+// export default App;
