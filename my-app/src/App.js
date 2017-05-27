@@ -28,7 +28,8 @@ class App extends React.Component {
     super();
 
     // this.xx = this.xx.bind(this);
-    //this.testFireBase = this.testFireBase.bind(this);
+    this.stateData = this.stateData.bind(this);
+    this.testFireBase = this.testFireBase.bind(this);
     this.userSignUp = this.userSignUp.bind(this);
     this.userLogIn = this.userLogIn.bind(this);
 
@@ -133,6 +134,10 @@ class App extends React.Component {
   });  
 }
 
+stateData ( formInfo ){
+  console.log(formInfo)
+}
+
 
 render() {
     let newSignUp = this.state.newSignUp;
@@ -161,7 +166,7 @@ render() {
             pathname: '/SignUpForm/xx',
             userInfo: 'function that updates state in a huge way'
           }}/> */}
-          <SignUpForm />
+          <SignUpForm stateData={this.stateData}/>
         </div>
       )
      } 

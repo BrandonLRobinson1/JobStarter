@@ -13,7 +13,7 @@ class SignUpForm extends React.Component{
   handleSubmit(event){
 
     event.preventDefault();
-    console.log({
+    let formInfo = {
       name: this.fullName.value,
       address: this.street1.value,
       address2: this.street2.value,
@@ -26,9 +26,10 @@ class SignUpForm extends React.Component{
       gitHub: this.githublink.value,
       authorized: this.authorized.value,
       disability: this.disability.value
-    });
+    };
 
-    
+    this.props.stateData( formInfo );
+
     this.SignUpForm.reset();
   }
 
@@ -70,5 +71,5 @@ class SignUpForm extends React.Component{
   }
 
 }
-
+//http://www.sfasdf.com
 export default SignUpForm;
