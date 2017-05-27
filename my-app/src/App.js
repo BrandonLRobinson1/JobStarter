@@ -1,24 +1,27 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
-// import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import Welcome from './components/Welcome'
-import base from './firebase/base';
-// import LogIn from './components/LogIn';
-// import SignUp from './components/SignUp';
+import SignUpForm from './components/SignUpForm'
 
-// import {
-// //   // BrowserRouter as Router,
-// //   // HashRouter as Router,
-// //   Route,
-// //   //Link,
-// //   NavLink,
-//   BrowserHistory
-// //   //Match
-// } from 'react-router-dom'
+import TestThatWillBeDelete from './components/Welcome';
+
+import base from './firebase/base';
+
+
+import {
+Redirect,
+// // BrowserRouter as Router,
+// // HashRouter as Router,
+Route
+// // Link,
+// // NavLink,
+// // BrowserHistory
+// // Match
+} from 'react-router-dom'
 
 class App extends React.Component {
   constructor(){
@@ -34,7 +37,8 @@ class App extends React.Component {
       newSignUp: false,
       userInfo: {
         name: '',
-        address: '',
+        address1: '',
+        address2: '',
         relocation: '',
         age: '',
         phone: '',
@@ -50,7 +54,7 @@ class App extends React.Component {
         linkToVideo: ''
       }
     };
-}
+  }
 
   // runs before things mount/are rendered, sync with firebase
   componentWillMount(){
@@ -85,7 +89,7 @@ class App extends React.Component {
   }
 
   // a test that firebase is working
-  testFireBase(){
+  testFireBase() {
     console.log('sayyy whaaaa', this.state.loggedIn)
     this.setState({
       loggedIn: !this.state.loggedIn
@@ -126,9 +130,15 @@ class App extends React.Component {
     console.log('login succesful');
     // const stateDuplicate = this.state.loggedIn;
     this.setState({
+      newSignUp: false,
       loggedIn: true
     });
     //set state and trigger a new render
+
+    // const namePath = this.state.name || 'test';
+    //this.location.pathname = `/jobstarter/:{namePath}`
+    // this.context.router.transitionTo(`/jobstarter/${namePath}`);
+
      } )
   .catch( err => {
      if (err) console.log( err );
@@ -140,9 +150,11 @@ class App extends React.Component {
   });  
 }
 
+
 render() {
-    let loggedIn = this.state.loggedIn;
     let newSignUp = this.state.newSignUp;
+    let loggedIn = this.state.loggedIn;
+    let namePath = this.state.name || 'test';
 
     // paths
     //if loggedin AND newsignp are false render origial
@@ -151,57 +163,40 @@ render() {
  
     // if logged in is true, render new everythign including nav
 
-    // if(!loggedIn && !newSignUp)
+    if(!loggedIn && !newSignUp) {
       return (
           <div className="container">
-           
-          <Welcome mainState={this.state}/>
+            <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
+            <Footer />
+            <button onClick={this.testFireBase}>testFIAAAA</button>
+          </div>
+        )
+    }
+
+    if (!loggedIn && newSignUp){
+      return (
+        <div className="container">
+          <Redirect to={{
+            pathname: '/SignUpForm/xx'
+            //state: { referrer: currentLocation }
+          }}/>
+        <Route path='/SignUpForm/xx' component={SignUpForm}/>
         </div>
       )
+     } 
 
-    // if (loggedIn){
-    //   console.log('$$$$');
-    // }
+    if (loggedIn && !newSignUp){
+      return (
+        <div>
+          <TestThatWillBeDelete />
+        </div>
+      )
     }
-    
   } 
+}
 
+App.contextTypes = {
+ router: PropTypes.object
+}
 
-export default App
-
-// render() {
-//     let loggedIn = this.state.loggedIn;
-//     let newSignUp = this.state.newSignUp;
-
-//     // paths
-//     //if loggedin AND newsignp are false render origial
-
-//     //if new sign up is true, render info gather, then route real home by setting logged in to true and signed in to false
- 
-//     // if logged in is true, render new everythign including nav
-
-//     if(!loggedIn && !newSignUp)
-//       return (
-//           <div className="container">
-//             <NavBar userSignUp={this.userSignUp} userLogIn={this.userLogIn}/>
-//             <Footer />
-//             <button onClick={this.testFireBase}>testFIAAAA</button>
-//           </div>
-//         )
-
-//     if (!loggedIn && newSignUp){
-//       return (
-//         <div className="container">
-//           <Welcome mainState={this.state}/>
-//         </div>
-//       )
-
-//     // if (loggedIn){
-//     //   console.log('$$$$');
-//     // }
-//     }
-    
-//   } 
-// }
-
-// export default App;
+export default App;

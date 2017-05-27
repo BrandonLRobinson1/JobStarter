@@ -5,10 +5,11 @@ class Home extends React.Component{
 
   render(){
     return (
-      <div className="App">Welcoming message followed by Please Log In</div>
+      <div className="App">
+        Welcoming message followed by Please Log In
+      </div>
     )
   }
-
 }
 
 export default Home;

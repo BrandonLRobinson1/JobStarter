@@ -9,19 +9,19 @@ class LogIn extends React.Component {
     this.logInFields = this.logInFields.bind(this);
   }
 
-logInFields(event){
-  event.preventDefault();
-  console.log('LogInInfo working');
-  //using refs in line 83 and 84 to grab inputs
-  const LogInInfo = {
-    email: this.inputEmail.value,
-    pw: this.inputPw.value
-  }
+  logInFields(event){
+    event.preventDefault();
+    console.log('LogInInfo working');
+    //using refs in line 83 and 84 to grab inputs
+    const LogInInfo = {
+      email: this.inputEmail.value,
+      pw: this.inputPw.value
+    }
 
-  this.props.location.userLogIn.userLogIn(LogInInfo);
-  //using ref on line to reset fields
-  this.LogInForm.reset();
-}
+    this.props.location.userLogIn.userLogIn(LogInInfo);
+    //using ref on line to reset fields
+    this.LogInForm.reset();
+  }
 
   render() {
 

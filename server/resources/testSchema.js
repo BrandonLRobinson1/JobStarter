@@ -7,18 +7,15 @@ var userSchema = mongoose.Schema({
       name: String,
       address: String,
       address2: String,
-      relocation: Boolean,
+      relocation: String,
       age: Number,
       phone: Number,
       resume: String,
       coverLetter: String,
       linkedIn: String,
       gitHub: String,
-      authorized: Boolean,
+      authorized: String,
       disability: Boolean,
-      gender: String,
-      race: String,
-      veteran: Boolean,
       linkToVideo: String
     }
   });

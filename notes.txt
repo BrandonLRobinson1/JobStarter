@@ -50,3 +50,47 @@ https://stackoverflow.com/questions/42893669/how-do-i-pass-props-in-react-router
 
 
 set a cookie - set up back end for auth and endpoints
+
+-routes welcome with full forms, integrated with database, use wes bos and axios with paths
+-exact paths
+-prop types
+-fix log in and sign in forms with real emails and clear database in mongo
+-cookies
+-fix sign in log in denials
+-fines tune everything
+-new branch
+
+
+//test sign up form
+
+render() {
+//     let loggedIn = this.state.loggedIn;
+//     let newSignUp = this.state.newSignUp;
+//     console.log(this.props)
+
+//     // paths
+//     //if loggedin AND newsignp are false render origial
+
+//     //if new sign up is true, render info gather, then route real home by setting logged in to true and signed in to false
+ 
+//     // if logged in is true, render new everythign including nav
+
+//     // if(!loggedIn && !newSignUp)
+//       return (
+//         <div className="container">
+//           <Welcome mainState={this.state}/>
+//         </div>
+//       )
+
+//     // if (loggedIn){
+//     //   console.log('$$$$');
+//     // }
+//     }
+    
+//   }
+
+// App.contextTypes = {
+//   router: PropTypes.object
+// }
+
+// export default App

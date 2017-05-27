@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 
 import {
   NavLink,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom'
 
 class NavBar extends React.Component{
@@ -29,7 +30,7 @@ class NavBar extends React.Component{
         </ul>
         <Route path="/LogIn"  component={LogIn}/>
         <Route path="/SignUp" component={SignUp}/>
-        <Route exact path='/' component={Home}/>
+        <Route exact path="/" component={Home}/>
       </span>  
     )
   }

@@ -5,10 +5,11 @@ class HomePage extends React.Component{
 
   render(){
     return (
-      <div className="App">hieeee (create logout button)</div>
+      <div className="App">
+        hieeee (create logout button)
+      </div>
     )
   }
-
 }
 
 export default HomePage;
