@@ -31,7 +31,7 @@ class SignUp extends React.Component {
     console.log(this.props, ' props on signup zaddyt');
     return (
       <div className="App form">
-        Sign In
+        Sign Up
         <form ref={ (input)=>{this.SignUpForm = input}} onSubmit={ (e)=>{this.signUpFields(e)} }>
           <input type='text' placeholder='email' className="inputEmail" ref={ (input) => { this.inputEmail = input } } required></input>
           <input type='password' placeholder='password' className="inputPasswird" ref={ (input) => { this.inputPW = input } } required></input>

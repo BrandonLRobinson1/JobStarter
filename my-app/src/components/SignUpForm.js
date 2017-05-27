@@ -27,6 +27,8 @@ class SignUpForm extends React.Component{
       authorized: this.authorized.value,
       disability: this.disability.value
     });
+
+    
     this.SignUpForm.reset();
   }
 
@@ -36,13 +38,13 @@ class SignUpForm extends React.Component{
     return (
       <div className="App">
 
-      <h1>Welcome First Timer</h1>
+      <h1>looks like this is your first time, lets get you hired</h1>
       <h4>youll only have to do this once (although you can always edit)</h4>
       <form onSubmit={this.handleSubmit} ref={ (input)=>{this.SignUpForm = input}}>
 
         <input type='text' placeholder='Full Name' className="mainForm" ref={ (input) => { this.fullName = input } } required></input>
         <input type='text' placeholder='Street (Apt #)' className="mainForm" ref={ (input) => { this.street1 = input } } required></input>
-        <input type='number' placeholder='City State Zip' className="mainForm" ref={ (input) => { this.street2 = input } } required></input>
+        <input type='text' placeholder='City State Zip' className="mainForm" ref={ (input) => { this.street2 = input } } required></input>
         <select type='text' placeholder='Relocation' className="mainForm" ref={ (input) => { this.relocation = input } } required>
           <option>Yes</option>
           <option>No</option>

@@ -17,7 +17,7 @@ Redirect,
 // // BrowserRouter as Router,
 // // HashRouter as Router,
 Route
-// // Link,
+// Link,
 // // NavLink,
 // // BrowserHistory
 // // Match
@@ -79,12 +79,9 @@ class App extends React.Component {
   // arguments are updated props and updated state
   componentWillUpdate(nextProps, nextState){
     //test componentWillUpdate activates on change
-    // console.log('something changed')
     // console.log({nextProps, nextState});
-    // localStorage.setItem(`yo`, !this.state.loggedIn);
 
     // notes - can only store stings or numbers in the local storage so stringify
-    
     localStorage.setItem(`${this.props.location.pathname}`, JSON.stringify(nextState.loggedIn));
   }
 
@@ -96,6 +93,7 @@ class App extends React.Component {
     })
   }
 
+  //handles new users sign up
   userSignUp( userCredentials ){
     console.log(userCredentials);
 
@@ -107,21 +105,16 @@ class App extends React.Component {
       this.setState({
         newSignUp: true
       });
-      // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
     } )
     .catch( err => {
+      // goal here is to make so if the name DOESNT exist then do move otherwise make them enter a new one
       if (err) console.log( err );
       alert('username already in use');
-      // this.setState({
-      //   email: '',
-      //   password: ''
-      // });
-      // reload page with err message ONCE reload is working <=========
     } );
   }
 
+  // logs user in, sets cookie on back end
   userLogIn( userCredentials ){
-    console.log(userCredentials);
 
     axios.post( 'http://localhost:8888/login',
       userCredentials
@@ -133,20 +126,10 @@ class App extends React.Component {
       newSignUp: false,
       loggedIn: true
     });
-    //set state and trigger a new render
-
-    // const namePath = this.state.name || 'test';
-    //this.location.pathname = `/jobstarter/:{namePath}`
-    // this.context.router.transitionTo(`/jobstarter/${namePath}`);
-
      } )
   .catch( err => {
      if (err) console.log( err );
      alert('username or password incorrect');
-    //  this.setState({
-    //   email: '',
-    //   password: ''
-    // });
   });  
 }
 
@@ -157,10 +140,8 @@ render() {
     let namePath = this.state.name || 'test';
 
     // paths
-    //if loggedin AND newsignp are false render origial
-
+    //if loggedin AND newsignup are false render original home
     //if new sign up is true, render info gather, then route real home by setting logged in to true and signed in to false
- 
     // if logged in is true, render new everythign including nav
 
     if(!loggedIn && !newSignUp) {
@@ -176,10 +157,11 @@ render() {
     if (!loggedIn && newSignUp){
       return (
         <div className="container">
-          <Redirect to={{
-            pathname: '/SignUpForm/xx'
-            //state: { referrer: currentLocation }
-          }}/>
+          {/* <Redirect to={{
+            pathname: '/SignUpForm/xx',
+            userInfo: 'function that updates state in a huge way'
+          }}/> */}
+          <SignUpForm to='/SignUpForm/xx'/>
         <Route path='/SignUpForm/xx' component={SignUpForm}/>
         </div>
       )
@@ -188,7 +170,7 @@ render() {
     if (loggedIn && !newSignUp){
       return (
         <div>
-          <TestThatWillBeDelete />
+          <h1>Redirect from above, or just render completley new components which is the same thing</h1>
         </div>
       )
     }
