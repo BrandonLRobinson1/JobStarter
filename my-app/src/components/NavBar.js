@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import {
   NavLink,
   Route,
-  Switch
+  Link
 } from 'react-router-dom'
 
 class NavBar extends React.Component{
@@ -17,6 +17,11 @@ class NavBar extends React.Component{
     return (
       <span>
          <ul className="nav">
+         <li>
+            <Link  to="/" exact>
+              Logo Icon
+            </Link>
+          </li>
           <li>
             <NavLink activeClassName='active'  to={ { pathname: "/SignUp", userSignUp:{userSignUp:this.props.userSignUp} } }>
               Sign Up

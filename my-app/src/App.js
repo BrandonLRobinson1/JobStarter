@@ -28,7 +28,7 @@ class App extends React.Component {
     super();
 
     // this.xx = this.xx.bind(this);
-    this.testFireBase = this.testFireBase.bind(this);
+    //this.testFireBase = this.testFireBase.bind(this);
     this.userSignUp = this.userSignUp.bind(this);
     this.userLogIn = this.userLogIn.bind(this);
 
@@ -161,8 +161,7 @@ render() {
             pathname: '/SignUpForm/xx',
             userInfo: 'function that updates state in a huge way'
           }}/> */}
-          <SignUpForm to='/SignUpForm/xx'/>
-        <Route path='/SignUpForm/xx' component={SignUpForm}/>
+          <SignUpForm />
         </div>
       )
      } 

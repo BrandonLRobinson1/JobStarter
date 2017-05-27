@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import LogIn from './components/LogIn';
+
 
 import PageNotFound from './components/PageNotFound';
 import './index.css';
 
 import {
   BrowserRouter as Router,
-  Route,
-  Switch
+  Route
+  // Switch
   // browserHistory //history={browserHistory}
 } from 'react-router-dom'
 
@@ -17,13 +17,10 @@ const Root = () => {
   return(
     <Router>
       <div>
-        <Switch>
           <Route path="/" component={App} />
           {/*<Route exacty path="/jobstarter/:name" component={PageNotFound} />*/}
           {/*<Royte path="/HomePage/:user" component={App}*/}
-          {/* need to handle page not found */}
-          <Route component={PageNotFound} />
-        </Switch>  
+          {/* need to handle page not found */} 
       </div>
     </Router>
     )
