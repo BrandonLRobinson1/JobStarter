@@ -32,10 +32,16 @@ class SignUp extends React.Component {
     return (
       <div className="App form">
         Sign Up
-        <form ref={ (input)=>{this.SignUpForm = input}} onSubmit={ (e)=>{this.signUpFields(e)} }>
-          <input type='text' placeholder='email' className="inputEmail" ref={ (input) => { this.inputEmail = input } } required></input>
-          <input type='password' placeholder='password' className="inputPasswird" ref={ (input) => { this.inputPW = input } } required></input>
-          <input type='submit' value='Test'></input>
+        <form className="formation" ref={ (input)=>{this.SignUpForm = input}} onSubmit={ (e)=>{this.signUpFields(e)} }>
+          <div className="input">
+            <input type='text' placeholder='email' className="inputEmail" ref={ (input) => { this.inputEmail = input } } required></input>
+          </div>
+          <div className="input">
+            <input type='password' placeholder='password' className="inputPasswird" ref={ (input) => { this.inputPW = input } } required></input>
+          </div>
+          <div className="input">
+            <input type='submit' value='Test'></input>
+          </div>
         </form>  
       </div>
     )    

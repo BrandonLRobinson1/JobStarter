@@ -28,10 +28,16 @@ class LogIn extends React.Component {
     return (
       <div className="App form">
         Log In
-        <form ref={ (input)=>{this.LogInForm = input} } onSubmit={ (e)=>{this.logInFields(e)} } >
-          <input type='text' placeholder='email' className="inputEmail" ref={ (input) => {this.inputEmail = input} } required></input>
-          <input type='text' placeholder='password' className="inputPasswird"  ref={ (input) => {this.inputPw = input} } required></input>
-          <input type='submit' value='Test'></input>
+        <form className="formation" ref={ (input)=>{this.LogInForm = input} } onSubmit={ (e)=>{this.logInFields(e)} } >
+          <div className="input" >
+            <input type='text' placeholder='email' className="inputEmail" ref={ (input) => {this.inputEmail = input} } required></input>
+          </div>
+          <div className="input" >
+            <input type='text' placeholder='password' className="inputPasswird"  ref={ (input) => {this.inputPw = input} } required></input>
+          </div>
+          <div className="input" >
+            <input type='submit' value='Test'></input>
+          </div>
         </form>  
       </div>
     )    

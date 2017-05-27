@@ -138,7 +138,6 @@ stateData ( formInfo ){
   console.log(formInfo)
 }
 
-
 render() {
     let newSignUp = this.state.newSignUp;
     let loggedIn = this.state.loggedIn;
