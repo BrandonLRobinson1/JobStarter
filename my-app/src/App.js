@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import SignUpForm from './components/SignUpForm'

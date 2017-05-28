@@ -69,5 +69,21 @@ exports.verifyUser = function(req, res){
 exports.updateUser = function(req, res){
 
   console.log( req.body, ' stateData info' );
+  let userEmail = req.body.userEmail;
+
+  User.findOneAndUpdate({email: userEmail}, {
+    '$set': {"userInfo.name": 'JOEEEE'}
+   },
+  function(err, data){
+    if(err) return err;
+    console.log(data, ' data shorts');
+  }
+  )
+
   res.status(201).send('yo');
 }
+
+
+
+
+

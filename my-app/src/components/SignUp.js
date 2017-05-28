@@ -28,7 +28,6 @@ class SignUp extends React.Component {
 
 
   render() {
-    console.log(this.props, ' props on signup zaddyt');
     return (
       <div className="App form">
         Sign Up
