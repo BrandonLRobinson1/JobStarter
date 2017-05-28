@@ -135,18 +135,18 @@ class App extends React.Component {
 }
 
 stateData ( formInfo ){
-  // console.log(formInfo);
+
   let signUpInfo = {
       stateData: formInfo,
       userEmail: this.state.userEmail
     }
-  console.log(signUpInfo, ' before axios')
+
   axios.post( 'http://localhost:8888/update',
       signUpInfo
     )
   .then( data => {
     // const stateDuplicate = this.state.loggedIn;
-    console.log(data, ' stateDate Success')
+    console.log(data.data.userInfo, ' stateData Success')
     // this.setState({
     //   newSignUp: false,
     //   loggedIn: true
