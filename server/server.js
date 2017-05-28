@@ -28,7 +28,7 @@ app.use( function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'X-Requested-With,X-Auth-Token,Content-Type, Content-Length');
   //res.header('Content-Type', '*');
 
-  console.log('this log comes with every header');
+  // console.log('this log comes with every header');
   next();
 });
 

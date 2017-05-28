@@ -159,6 +159,13 @@ stateData ( formInfo ){
 }
 
 render() {
+        // return (
+        //   <div className="container">
+        //       <SignUpForm stateData={this.stateData}/>
+        //   </div>
+        // )
+
+
     let newSignUp = this.state.newSignUp;
     let loggedIn = this.state.loggedIn;
     let namePath = this.state.name || 'test';
@@ -167,6 +174,8 @@ render() {
     //if loggedin AND newsignup are false render original home
     //if new sign up is true, render info gather, then route real home by setting logged in to true and signed in to false
     // if logged in is true, render new everythign including nav
+
+
 
     if(!loggedIn && !newSignUp) {
       return (

@@ -13,10 +13,14 @@ class SignUpForm extends React.Component{
   handleSubmit(event){
 
     event.preventDefault();
+
     let formInfo = {
       name: this.fullName.value,
-      address: this.street1.value
+      address: this.street1.value,
+      address2: this.street2.value
     };
+
+
     // let formInfo = {
     //   name: this.fullName.value,
     //   address: this.street1.value,
@@ -24,7 +28,7 @@ class SignUpForm extends React.Component{
     //   relocation: this.relocation.value,
     //   age: this.age.value,
     //   phone: this.PhoneNumber.value,
-    //   resume: this.resume.value,
+    //   resume: "resume would go here", //this.resume.value, -> also no need for grid fs as files are very small
     //   coverLetter: this.coverletter.value,
     //   linkedIn: this.linkedInlink.value,
     //   gitHub: this.githublink.value,
@@ -39,7 +43,8 @@ class SignUpForm extends React.Component{
 
 
   render(){
-    
+
+
         return (
       <div className="App">
 
@@ -50,14 +55,17 @@ class SignUpForm extends React.Component{
           <input type='text' placeholder='Full Name' className="mainForm" ref={ (input) => { this.fullName = input } } required></input>
         </div>
         <div className="input">
-          <input type='text' placeholder='Street (Apt #)' className="mainForm" ref={ (input) => { this.street1 = input } } required></input>
+          <input type='text' placeholder='Street (Apt #)' className="mainForm" ref={ (input) => { this.street1 = input } }></input>
         </div>
-                 <div className="input">
-           <input type="submit" value="submit"></input>
-         </div>
+        <div className="input">
+          <input type='text' placeholder='City State Zip' className="mainForm" ref={ (input) => { this.street2 = input } }></input>
+        </div>
+                 <input type="submit" value="submit"></input>
+
       </form>
       </div>
     )
+
 
     // return (
     //   <div className="App">
@@ -88,7 +96,7 @@ class SignUpForm extends React.Component{
     //       <input type='number' placeholder='PhoneNumber' className="mainForm" minLength="10" maxLength="10" ref={ (input) => { this.PhoneNumber = input } } required></input>
     //     </div>
     //     <div className="input">
-    //       <textarea type='text' placeholder='Resume' className="mainForm" ref={ (input) => { this.resume = input } } required></textarea>
+    //       <input type='file' accept="pdf"placeholder='Resume' className="mainForm" ref={ (input) => { this.resume = input } } required></input>
     //     </div>
     //     <div className="input">
     //       <textarea type='text' placeholder='coverletter' className="coverletter" ref={ (input) => { this.coverletter = input } } required></textarea>

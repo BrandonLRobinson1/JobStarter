@@ -4,9 +4,9 @@ let bcrypt        = require('bcrypt');
 let passport      = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
 let User          = require('./testSchema');
-let app           = require('../server');
 
-console.log(app, ' its ok')
+// let app           = require('../server');
+// console.log(app, ' its ok')
 
 
 exports.passport;
@@ -68,11 +68,14 @@ exports.verifyUser = function(req, res){
 
 exports.updateUser = function(req, res){
 
-  console.log( req.body, ' stateData info' );
+  // console.log( req.body, ' stateData info' );
   let userEmail = req.body.userEmail;
 
+  let infoObj = req.body.stateData;
+  console.log(infoObj, ' delete name off this but it should be name!!!')
+
   User.findOneAndUpdate({email: userEmail}, {
-    '$set': {"userInfo.name": 'JOEEEE'}
+    '$set': {"userInfo.name": infoObj.name}
    },
   function(err, data){
     if(err) return err;
@@ -82,6 +85,8 @@ exports.updateUser = function(req, res){
 
   res.status(201).send('yo');
 }
+
+
 
 
 
