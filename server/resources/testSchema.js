@@ -15,8 +15,8 @@ var userSchema = mongoose.Schema({
       linkedIn: String,
       gitHub: String,
       authorized: String,
-      disability: Boolean,
-      linkToVideo: String
+      disability: Boolean //,
+      // linkToVideo: String
     }
   });
 

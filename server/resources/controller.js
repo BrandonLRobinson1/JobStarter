@@ -66,38 +66,30 @@ exports.verifyUser = function(req, res){
 
 }
 
-// exports.updateUser = function(req, res){
-
-//   // console.log( req.body, ' stateData info' );
-//   let userEmail = req.body.userEmail;
-//   let infoObj = req.body.stateData;
-
-//   User.findOneAndUpdate({email: userEmail}, {
-//     '$set': {"userInfo.name": infoObj.name}
-//    },
-//   {'new': true},
-//   function(err, data){
-//     if(err) return err;
-//     console.log(data, ' data shorts');
-//     res.status(201).send('whatever');
-//   }
-// )}
-
 exports.updateUser = function(req, res){
 
-  // console.log( req.body, ' stateData info' );
   let userEmail = req.body.userEmail;
   let infoObj = req.body.stateData;
 
   User.findOneAndUpdate({email: userEmail}, {
-    '$set': {"userInfo.name": infoObj.name}
+    '$set': 
+    {"userInfo.name": infoObj.name,
+     "userInfo.address": infoObj.address,
+     "userInfo.address2": infoObj.address2,
+     "userInfo.relocation": infoObj.relocation,
+     "userInfo.age": infoObj.age,
+     "userInfo.phone": infoObj.phone,
+     "userInfo.resume": infoObj.resume,
+     "userInfo.coverLetter": infoObj.coverLetter,
+     "userInfo.linkedIn": infoObj.linkedIn,
+     "userInfo.gitHub": infoObj.gitHub,
+     "userInfo.authorized": infoObj.authorized,
+     "userInfo.disability": infoObj.disability
+    }
    },
   {'new': true},
   function(err, data){
-    if(err) {
-      console.log('there must be an errrrrr')
-       return err;
-     }
+    if(err) return err;
     if ( data ){
       console.log(data)
       res.status(201).send(data);
