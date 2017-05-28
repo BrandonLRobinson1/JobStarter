@@ -18,7 +18,7 @@ class NavBar extends React.Component{
       <span>
          <ul className="nav">
          <li>
-            <Link  to="/" exact>
+            <Link  to="/">
               Logo Icon
             </Link>
           </li>
@@ -35,7 +35,7 @@ class NavBar extends React.Component{
         </ul>
         <Route path="/LogIn"  component={LogIn}/>
         <Route path="/SignUp" component={SignUp}/>
-        <Route path="/" component={Home}/>
+        <Route exact path="/" component={Home}/>
       </span>  
     )
   }

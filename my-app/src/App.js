@@ -36,6 +36,7 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       newSignUp: false,
+      userEmail: "",
       userInfo: {
         name: '',
         address1: '',
@@ -96,15 +97,15 @@ class App extends React.Component {
 
   //handles new users sign up
   userSignUp( userCredentials ){
-    console.log(userCredentials);
 
     axios.post( 'http://localhost:8888/signup',
-      userCredentials
+      userCredentials //change back to signupinfo
     )
     .then( data => {
-      console.log('user created');
+      console.log(data.data.email, 'user created');
       this.setState({
-        newSignUp: true
+        newSignUp: true,
+        userEmail: data.data.email
       });
     } )
     .catch( err => {
@@ -135,7 +136,27 @@ class App extends React.Component {
 }
 
 stateData ( formInfo ){
-  console.log(formInfo)
+  // console.log(formInfo);
+  let signUpInfo = {
+      stateData: formInfo,
+      userEmail: this.state.userEmail
+    }
+  console.log(signUpInfo, ' before axios')
+  axios.post( 'http://localhost:8888/update',
+      signUpInfo
+    )
+  .then( data => {
+    // const stateDuplicate = this.state.loggedIn;
+    console.log(data, ' stateDate Success')
+    // this.setState({
+    //   newSignUp: false,
+    //   loggedIn: true
+    // });
+     } )
+  .catch( err => {
+     if (err) console.log( err );
+     alert('your job info sucks');
+  });  
 }
 
 render() {

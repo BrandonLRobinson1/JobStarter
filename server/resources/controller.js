@@ -29,7 +29,7 @@ exports.createUser = function(req, res){
     if (!user) {
       newUser.save( function(err, newuser){
         if (err) console.log(err);
-        console.log(newuser, ' succesful save');
+        // console.log(newuser, ' succesful save');
         res.status(201).send(newUser);
       } );
     } else {
@@ -66,3 +66,8 @@ exports.verifyUser = function(req, res){
 
 }
 
+exports.updateUser = function(req, res){
+
+  console.log( req.body, ' stateData info' );
+  res.status(201).send('yo');
+}
