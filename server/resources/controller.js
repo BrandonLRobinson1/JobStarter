@@ -70,22 +70,40 @@ exports.updateUser = function(req, res){
 
   // console.log( req.body, ' stateData info' );
   let userEmail = req.body.userEmail;
-
   let infoObj = req.body.stateData;
-  console.log(infoObj, ' delete name off this but it should be name!!!')
 
   User.findOneAndUpdate({email: userEmail}, {
     '$set': {"userInfo.name": infoObj.name}
    },
+  {'new': true},
   function(err, data){
     if(err) return err;
     console.log(data, ' data shorts');
+    res.status(201).send('whatever');
   }
-  )
+)}
 
-  res.status(201).send('yo');
-}
+// exports.updateUser = function(req, res){
 
+//   // console.log( req.body, ' stateData info' );
+//   let userEmail = req.body.userEmail;
+//   let infoObj = req.body.stateData;
+
+//   User.findOneAndUpdate({email: userEmail}, {
+//     '$set': {"userInfo.name": infoObj.name}
+//    },
+//   {'returnNewDocument': true},
+//   function(err, data){
+//     if(err) return err;
+//     if ( data ){
+//       res.status(201).send(data);
+//     } else {
+//       console.log('your form data might be trash');
+//       res.status(400).send('or nahh');
+//     }
+//   }
+  
+// )}
 
 
 
