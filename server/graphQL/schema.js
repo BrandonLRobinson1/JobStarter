@@ -1,20 +1,29 @@
 var graphql = require ('graphql');
 var mongoose = require('../db/db');
+// var USERS = require('../resources/testSchema');
+
+
 // var app1 = require('./graphQLServer')
 
 
-var USERS = [  
-  {
-    "id": 1446412739542,
-    "email": "Read emails",
-    "password": 'false'
-  },
-  {
-    "id": 1446412740883,
-    "email": "Buy orange",
-    "password": 'true'
-  }
-];
+// var USERS = [  
+//   {
+//     "id": 1446412739542,
+//     "email": "Read emails",
+//     "password": 'false'
+//   },
+//   {
+//     "id": 1446412740883,
+//     "email": "Buy orange",
+//     "password": 'true'
+//   }
+// ];
+
+var USERS = mongoose.model('User', {  
+    // id: mongoose.Schema.Types.ObjectId,
+    email: String,
+    password: String
+  })
 
 let userType = new graphql.GraphQLObjectType({
   name: 'user',
@@ -65,25 +74,40 @@ const MutationType = new graphql.GraphQLObjectType({
   }
 });
 
+// const queryType = new graphql.GraphQLObjectType({
+//   name: 'Query',
+//   fields: function () {
+//     return {
+//       users: {
+//         type: new graphql.GraphQLList(userType),
+//         resolve: function () {
+//           return new Promise( function(resolve, reject) {
+//             setTimeout(function () {
+//               resolve(USERS);
+//             }, 4000)
+//           } );
+//         }
+//       }
+//     }
+//   }
+// })
+
 const queryType = new graphql.GraphQLObjectType({
   name: 'Query',
-  fields: function () {
-    return {
-      users: {
-        type: new graphql.GraphQLList(userType),
-        resolve: function () {
-          return new Promise( function(resolve, reject) {
-            setTimeout(function () {
-              resolve(USERS);
-            }, 4000)
-          } );
-        }
+  fields: () => ({
+    users: {
+      type: new graphql.GraphQLList(userType),
+      resolve: () => {
+        return new Promise((resolve, reject) => {
+          USERS.find((err, users) =>{
+            if(err) reject(err)
+             else resolve(users) 
+          })
+        })
       }
     }
-  }
+  })
 })
-
-
 
 
 
