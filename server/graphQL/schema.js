@@ -22,7 +22,22 @@ var mongoose = require('../db/db');
 var USERS = mongoose.model('User', {  
     // id: mongoose.Schema.Types.ObjectId,
     email: String,
-    password: String
+    password: String//,
+  //     userInfo: {
+  //     name: String,
+  //     address: String,
+  //     address2: String,
+  //     relocation: String,
+  //     age: Number,
+  //     phone: Number,
+  //     resume: String,
+  //     coverLetter: String,
+  //     linkedIn: String,
+  //     gitHub: String,
+  //     authorized: String,
+  //     disability: Boolean //,
+  //     // linkToVideo: String
+  //   }
   })
 
 let userType = new graphql.GraphQLObjectType({
@@ -42,6 +57,11 @@ let userType = new graphql.GraphQLObjectType({
     }
   }
 });
+
+
+
+
+
 
 let MutationAdd = {
   type: userType,

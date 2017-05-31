@@ -10,7 +10,7 @@ graphql(SCHEMA, query)
     console.log(JSON.stringify(result, null, ' '));
   } );
 
-let app1 = express()
+let app = express()
   .use('/graphql', graphQLHTTP({schema: SCHEMA, pretty: true, graphiql:true}))
   .listen(8080, function(err) {
     console.log('GraphQL for the win')
