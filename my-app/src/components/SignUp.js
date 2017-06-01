@@ -23,7 +23,6 @@ class SignUp extends React.Component {
     //using ref on line 61 to reset input
     this.SignUpForm.reset();
 
-
   }
 
 
