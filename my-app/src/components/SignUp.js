@@ -22,7 +22,6 @@ class SignUp extends React.Component {
     this.props.location.userSignUp.userSignUp( SignUp );
     //using ref on line 61 to reset input
     this.SignUpForm.reset();
-
   }
 
 
