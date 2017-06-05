@@ -5,10 +5,6 @@ let passport      = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
 let User          = require('./testSchema');
 
-// let app           = require('../server');
-// console.log(app, ' its ok')
-
-
 exports.passport;
 exports.LocalStrategy;
 
@@ -58,11 +54,8 @@ exports.verifyUser = function(req, res){
       } else {
         console.log('password is incorrect');
         res.status(400).send('username or pw is not correct');
-
       }
-
     });
-
   });
 
 }
@@ -71,22 +64,23 @@ exports.updateUser = function(req, res){
 
   let userEmail = req.body.userEmail;
   let infoObj = req.body.stateData;
-  //destructure this!!!! <------------------------
+  let { name, address, address2, relocation, age, phone, resume, coverLetter, linkedIn, gitHub, authorized, disability } = infoObj;
+
   User.findOneAndUpdate({email: userEmail}, {
     '$set': 
-    {"userInfo.name": infoObj.name,
-     "userInfo.address": infoObj.address,
-     "userInfo.address2": infoObj.address2,
-     "userInfo.relocation": infoObj.relocation,
-     "userInfo.age": infoObj.age,
-     "userInfo.phone": infoObj.phone,
-     "userInfo.resume": infoObj.resume,
-     "userInfo.coverLetter": infoObj.coverLetter,
-     "userInfo.linkedIn": infoObj.linkedIn,
-     "userInfo.gitHub": infoObj.gitHub,
-     "userInfo.authorized": infoObj.authorized,
-     "userInfo.disability": infoObj.disability
-    }
+      {"userInfo.name": name,
+       "userInfo.address": address,
+       "userInfo.address2": address2,
+       "userInfo.relocation": relocation,
+       "userInfo.age": age,
+       "userInfo.phone": phone,
+       "userInfo.resume": resume,
+       "userInfo.coverLetter": coverLetter,
+       "userInfo.linkedIn": linkedIn,
+       "userInfo.gitHub": gitHub,
+       "userInfo.authorized": authorized,
+       "userInfo.disability": disability
+      }
    },
   {'new': true},
   function(err, data){

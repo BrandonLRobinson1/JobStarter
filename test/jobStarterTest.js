@@ -1,4 +1,4 @@
-//process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test';
 
 let chai        = require('chai');
 let chaiHttp    = require('chai-http');
@@ -15,7 +15,7 @@ describe( 'new user', ()=>{
         address: 'test',
         address2: 'test',
         relocation: 'test',
-        age: 1,
+        age: 2,
         phone: 1,
         resume: 'test',
         coverLetter: 'test',
