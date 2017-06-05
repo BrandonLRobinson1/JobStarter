@@ -29,7 +29,7 @@ exports.createUser = function(req, res){
     if (!user) {
       newUser.save( function(err, newuser){
         if (err) console.log(err);
-        // console.log(newuser, ' succesful save');
+        console.log(newuser, ' succesful save');
         res.status(201).send(newUser);
       } );
     } else {
@@ -56,6 +56,7 @@ exports.verifyUser = function(req, res){
         console.log(req.session, ' the sessh')
         res.status(201).send(user);
       } else {
+        console.log('password is incorrect');
         res.status(400).send('username or pw is not correct');
 
       }
@@ -70,7 +71,7 @@ exports.updateUser = function(req, res){
 
   let userEmail = req.body.userEmail;
   let infoObj = req.body.stateData;
-
+  //destructure this!!!! <------------------------
   User.findOneAndUpdate({email: userEmail}, {
     '$set': 
     {"userInfo.name": infoObj.name,
