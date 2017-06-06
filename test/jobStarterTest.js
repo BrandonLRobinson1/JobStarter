@@ -25,7 +25,7 @@ describe( 'new user', ()=>{
         disability: true //,
     }
 
-  it('test user should be created', done => {
+  it('new user with new credentials, new user should be created', done => {
     let logInInfo = {
       email: newUserEmail,
       pw: 'xxx'
@@ -40,7 +40,22 @@ describe( 'new user', ()=>{
       } );
   } );
 
-  it('test user should be updated', done => {
+  it(`new user with taken credentials, new user should be denied`, done => {
+    let logInInfo = {
+      email: newUserEmail,
+      pw: 'xxx'
+    }
+    chai.request(server)
+      .post('/signup') //only add route**
+      .send( logInInfo )
+      .end( (err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        done();
+      } );
+  } );
+
+  it('new users databas information should be updated with new information', done => {
     let signUpInfo = {
       stateData: userInfo,
       userEmail: newUserEmail
@@ -55,7 +70,7 @@ describe( 'new user', ()=>{
       } );
   } );
 
-  it('test user should be denied do to wrong pw', done => {
+  it('logging in, user should be denied due to incorrect password', done => {
     let logInInfo = {
       email: newUserEmail,
       pw: 'notThePassword'
@@ -70,7 +85,7 @@ describe( 'new user', ()=>{
       } );
   } );
 
-  it('test user should be denied do to the wrong password', done => {
+  it('logging in with correct user name and password, should be a go!!', done => {
     let logInInfo = {
       email: newUserEmail,
       pw: 'xxx'

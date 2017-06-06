@@ -1,19 +1,14 @@
 let express          = require('express');
-// let bcrypt        = require('bcrypt');
 let bodyParser       = require('body-parser');
-// let cookieParser     = require('cookie-parser'); not needed with this version of express-session
 let session          = require('express-session');
 let request          = require('request');
 let db               = require('./db/db.js');
-//let router      = express.Router(); // <----- error says it requires callback
+// let router      = express.Router(); // <----- error says it requires callback
 let config           = require('config');
 let morgan           = require('morgan');
 var PORT             = 8888;
 // var PORT        = process.env.NODE_ENV || 8888;
 let jobStarterRouter =  require('./resources/jobStarterRouter.js');
-//passport
-// let passport         = require('passport')
-// let LocalStrategy    = require('passport-local').Strategy;
 
 let app              = express();
 
@@ -27,16 +22,11 @@ app.use( function(req, res, next) {
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With,X-Auth-Token,Content-Type, Content-Length');
   //res.header('Content-Type', '*');
-
   // console.log('this log comes with every header');
   next();
 });
 
 app.use(express.static('public'));
-// app.use(cookieParser('tell nobody')); not needed with this version of express-session
-
-// app.use(passport.initialize()); <=========
-// app.use(passport.session());
 
 // app.use(flash());
 
@@ -81,16 +71,4 @@ app.listen( PORT, (err) => {
   console.log( 'Portgas D. Ace :' + PORT ); 
 } );
 
-module.exports = app;
-
-
-// app.set('trust proxy', 1) // trust first proxy 
-// app.use(session({
-//   cookie: { path:'/Login', secure: true, httpOnly: true, maxAge:30 * 60 * 1000 }
-//   cookieName: 'jobStarter',
-//   secret: 'ilovescotchscotchyscotchscotch',
-//   resave: false,
-//   saveUninitialized: false,
-//   duration: 30 * 60 * 1000,
-//   activeDuration: 5 * 60 * 1000
-// })); 
+module.exports = app; 

@@ -1,13 +1,7 @@
-
-
 // var app = require('../server');
 let bcrypt        = require('bcrypt');
-// let passport      = require('passport');
-// let LocalStrategy = require('passport-local').Strategy;
 let User          = require('./testSchema');
 
-// exports.passport;
-// exports.LocalStrategy;
 
 exports.createUser = function(req, res){
 
@@ -26,15 +20,16 @@ exports.createUser = function(req, res){
     if (!user) {
       newUser.save( function(err, newuser){
         if (err) console.log(err);
-        console.log(newuser, ' succesful save');
+        console.log('succesfuly saved new user');
         res.status(201).send(newUser);
       } );
     } else {
-      console.log('already created');
-      res.status(400).send('user already exists');
+      console.log('this user/email has already been created');
+      res.status(400).send('this user/email has already been created');
     }
   });
 };
+
 
 exports.verifyUser = function(req, res){
 
@@ -44,25 +39,25 @@ exports.verifyUser = function(req, res){
 
   User.findOne({email: email}, (err, user)=>{
     if (err) return handleError(err);
-    console.log('user found');
+    console.log('user found, verifying password...');
 
     bcrypt.compare(password, user.password, function(err, response) {
       //response is true if and only if passwords match
       if (response) {
         req.session.regenerate(function(err) {
           // will have a new session here
-          console.log('session created');
-          console.log(req.session, ' delete me')
+          console.log('password verified...session created');
+          //console.log(req.session, ' delete me')
         })
         res.status(201).send(user);
       } else {
-        console.log('password is incorrect');
-        res.status(400).send('username or pw is not correct');
+        console.log('username or password is incorrect');
+        res.status(400).send('username or password is incorrect');
       }
     });
   });
+};
 
-}
 
 exports.updateUser = function(req, res){
 
@@ -90,12 +85,11 @@ exports.updateUser = function(req, res){
   function(err, data){
     if(err) return err;
     if ( data ){
-      console.log(data)
+      console.log('new user data saved -- name, address, linkedIn etc')
       res.status(201).send(data);
     } else {
       console.log('your form data might be trash');
-      res.status(400).send('or nahh');
+      res.status(400).send('something is wrong with your data R2D2');
     }
-  }
-  
-)}
+  }  
+)};
