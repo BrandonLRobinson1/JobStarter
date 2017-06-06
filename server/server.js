@@ -1,7 +1,7 @@
 let express          = require('express');
 // let bcrypt        = require('bcrypt');
 let bodyParser       = require('body-parser');
-let cookieParser     = require('cookie-parser');
+// let cookieParser     = require('cookie-parser'); not needed with this version of express-session
 let session          = require('express-session');
 let request          = require('request');
 let db               = require('./db/db.js');
@@ -12,8 +12,8 @@ var PORT             = 8888;
 // var PORT        = process.env.NODE_ENV || 8888;
 let jobStarterRouter =  require('./resources/jobStarterRouter.js');
 //passport
-let passport         = require('passport')
-let LocalStrategy    = require('passport-local').Strategy;
+// let passport         = require('passport')
+// let LocalStrategy    = require('passport-local').Strategy;
 
 let app              = express();
 
@@ -32,20 +32,31 @@ app.use( function(req, res, next) {
   next();
 });
 
-app.use(session({ 
+app.use(express.static('public'));
+// app.use(cookieParser('tell nobody')); not needed with this version of express-session
+
+// app.use(passport.initialize()); <=========
+// app.use(passport.session());
+
+// app.use(flash());
+
+app.set('trust proxy', 1) // trust first proxy 
+app.use(session({
+  cookie: {  secure: false, httpOnly: false, maxAge:30 * 60 * 1000 }, //path:'/Login', httpOnly: false, secure: false
   cookieName: 'jobStarter',
   secret: 'ilovescotchscotchyscotchscotch',
   resave: false,
   saveUninitialized: false,
   duration: 30 * 60 * 1000,
-  activeDuration: 5 * 60 * 1000
+  activeDuration: 5 * 60 * 1000//,
+  // genid: function(req) {
+  //   return genuuid() // use UUIDs for session IDs 
+  // }
 })); 
-
-app.use(express.static('public'));
-app.use(cookieParser('tell nobody'));
-app.use(passport.initialize());
-app.use(passport.session());
-// app.use(flash());
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy 
+  sess.cookie.secure = true // serve secure cookies 
+}
 
 //parse application/json and look for raw text                                        
 app.use(bodyParser.json());                                     
@@ -59,7 +70,7 @@ app.use( jobStarterRouter );
 // console.log(config.util.getEnv('NODE_ENV'), 'node envyyy');
 if(config.util.getEnv('NODE_ENV') !== 'test') {
 //if(process.env.NODE_ENV !== 'test') {
-  console.log('runs')
+  console.log('NODE_ENV is test')
     //use morgan to log at command line
     app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
 }
@@ -71,3 +82,15 @@ app.listen( PORT, (err) => {
 } );
 
 module.exports = app;
+
+
+// app.set('trust proxy', 1) // trust first proxy 
+// app.use(session({
+//   cookie: { path:'/Login', secure: true, httpOnly: true, maxAge:30 * 60 * 1000 }
+//   cookieName: 'jobStarter',
+//   secret: 'ilovescotchscotchyscotchscotch',
+//   resave: false,
+//   saveUninitialized: false,
+//   duration: 30 * 60 * 1000,
+//   activeDuration: 5 * 60 * 1000
+// })); 

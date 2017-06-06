@@ -70,7 +70,7 @@ describe( 'new user', ()=>{
       } );
   } );
 
-  it('test user should be denied do to wrong pw', done => {
+  it('test user should be denied do to the wrong password', done => {
     let logInInfo = {
       email: newUserEmail,
       pw: 'xxx'
@@ -85,8 +85,6 @@ describe( 'new user', ()=>{
       } );
   } );
 
-
 } );
 
   
-

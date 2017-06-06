@@ -1,12 +1,13 @@
 
+
 // var app = require('../server');
 let bcrypt        = require('bcrypt');
-let passport      = require('passport');
-let LocalStrategy = require('passport-local').Strategy;
+// let passport      = require('passport');
+// let LocalStrategy = require('passport-local').Strategy;
 let User          = require('./testSchema');
 
-exports.passport;
-exports.LocalStrategy;
+// exports.passport;
+// exports.LocalStrategy;
 
 exports.createUser = function(req, res){
 
@@ -48,8 +49,11 @@ exports.verifyUser = function(req, res){
     bcrypt.compare(password, user.password, function(err, response) {
       //response is true if and only if passwords match
       if (response) {
-        req.session.user = user;
-        console.log(req.session, ' the sessh')
+        req.session.regenerate(function(err) {
+          // will have a new session here
+          console.log('session created');
+          console.log(req.session, ' delete me')
+        })
         res.status(201).send(user);
       } else {
         console.log('password is incorrect');

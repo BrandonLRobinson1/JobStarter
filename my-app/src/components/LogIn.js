@@ -36,7 +36,7 @@ class LogIn extends React.Component {
             <input type='text' placeholder='password' className="inputPasswird"  ref={ (input) => {this.inputPw = input} } required></input>
           </div>
           <div className="input" >
-            <input type='submit' value='Test'></input>
+            <input type='submit' value='Log In'></input>
           </div>
         </form>  
       </div>

@@ -37,7 +37,7 @@ class SignUp extends React.Component {
             <input type='password' placeholder='password' className="inputPasswird" ref={ (input) => { this.inputPW = input } } required></input>
           </div>
           <div className="input">
-            <input type='submit' value='Test'></input>
+            <input type='submit' value='Sign Up'></input>
           </div>
         </form>  
       </div>
