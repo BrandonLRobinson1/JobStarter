@@ -1,14 +1,11 @@
-let fistDayRouter = require('express').Router();
+let jobStarterRouter = require('express').Router();
 let controller = require('./controller.js');
 
-fistDayRouter.post('/signup', controller.createUser);
+jobStarterRouter.post('/signup', controller.createUser);
 
-fistDayRouter.post('/login', controller.verifyUser);
+jobStarterRouter.post('/login', controller.verifyUser);
 
-fistDayRouter.post('/update', controller.updateUser);
-
-
-// fistDayRouter.post('/logout', controller.logout);
+jobStarterRouter.post('/update', controller.updateUser);
 
 
-module.exports = fistDayRouter;
+module.exports = jobStarterRouter;
