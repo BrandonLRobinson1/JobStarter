@@ -55,7 +55,7 @@ describe( 'new user', ()=>{
       } );
   } );
 
-  it('new users databas information should be updated with new information', done => {
+  it('new users database information should be updated with new info', done => {
     let signUpInfo = {
       stateData: userInfo,
       userEmail: newUserEmail

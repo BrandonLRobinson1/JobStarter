@@ -1,5 +1,5 @@
-var fistDayRouter = require('express').Router();
-var controller = require('./controller.js');
+let fistDayRouter = require('express').Router();
+let controller = require('./controller.js');
 
 fistDayRouter.post('/signup', controller.createUser);
 
