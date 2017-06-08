@@ -85,7 +85,8 @@ let userType = new graphql.GraphQLObjectType({
         resolve(user){
           return [
             {
-              name: user.userInfo.name,
+              name: user,
+              // name: user.userInfo.name,
               address: user.userInfo.address,
               address2: user.userInfo.address2,
               relocation: user.userInfo.relocation,
@@ -136,23 +137,6 @@ const MutationType = new graphql.GraphQLObjectType({
   }
 });
 
-// const queryType = new graphql.GraphQLObjectType({
-//   name: 'Query',
-//   fields: function () {
-//     return {
-//       users: {
-//         type: new graphql.GraphQLList(userType),
-//         resolve: function () {
-//           return new Promise( function(resolve, reject) {
-//             setTimeout(function () {
-//               resolve(USERS);
-//             }, 4000)
-//           } );
-//         }
-//       }
-//     }
-//   }
-// })
 
 const queryType = new graphql.GraphQLObjectType({
   name: 'Query',
@@ -164,7 +148,7 @@ const queryType = new graphql.GraphQLObjectType({
           USERS.find((err, users) =>{
             if(err) { reject(err) 
              } else { 
-              console.log(users);
+              //console.log(users);
               resolve(users) ;
              }
           })
