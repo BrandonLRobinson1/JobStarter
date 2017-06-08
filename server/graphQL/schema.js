@@ -46,6 +46,39 @@ let userAttr = new graphql.GraphQLObjectType({
     return{
       name: {
         type: graphql.GraphQLString
+      },
+      address: {
+        type: graphql.GraphQLString
+      },
+      address2: {
+        type: graphql.GraphQLBoolean
+      },
+      relocation: {
+        type: graphql.GraphQLString
+      },
+      age: {
+        type: graphql.GraphQLInt
+      },
+      phone: {
+        type: graphql.GraphQLInt
+      },
+      resume: {
+        type: graphql.GraphQLString
+      },
+      coverLetter: {
+        type: graphql.GraphQLString
+      },
+      linkedIn: {
+        type: graphql.GraphQLString
+      },
+      gitHub: {
+        type: graphql.GraphQLString
+      },
+      authorized: {
+        type: graphql.GraphQLBoolean
+      },
+      disability: {
+        type: graphql.GraphQLBoolean
       }
     }
   }
@@ -77,8 +110,31 @@ let userType = new graphql.GraphQLObjectType({
         type: new graphql.GraphQLList(userAttr),
         resolve(user){
           return [
-            // {name: user}
-            {name: user.userInfo.name}
+            // {name: user.userInfo.name},
+            // {address: user.userInfo.address},
+            // {address2: user.userInfo.address2},
+            // {relocation: user.userInfo.relocation},
+            // {age: user.userInfo.age},
+            // {phone: user.userInfo.phone},
+            // {resume: user.userInfo.resume},
+            // {coverLetter: user.userInfo.coverLetter},
+            // {linkedIn: user.userInfo.linkedIn},
+            // {gitHub: user.userInfo.gitHub},
+            // {authorized: user.userInfo.authorized},
+            // {disability: user.userInfo.disability}
+
+            {name: user.userInfo.name,
+            address: user.userInfo.address,
+            address2: user.userInfo.address2,
+            relocation: user.userInfo.relocation,
+            age: user.userInfo.age,
+            phone: user.userInfo.phone,
+            resume: user.userInfo.resume,
+            coverLetter: user.userInfo.coverLetter,
+            linkedIn: user.userInfo.linkedIn,
+            gitHub: user.userInfo.gitHub,
+            authorized: user.userInfo.authorized,
+            disability: user.userInfo.disability}
           ];
         }
       }
