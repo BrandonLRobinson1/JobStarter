@@ -4,7 +4,8 @@ const graphQLHTTP = require('express-graphql');
 const SCHEMA = require('./schema');
 
 //INTERNAL TEST, NOT THE REAL DEAL
-let query = 'query { users {id,email,password} }';
+// let query = 'query { users {id,email,password} }';
+let query = 'query { users {id,email,password,userInfo{name}} }';
 graphql(SCHEMA, query)
   .then( function(result){
     console.log(JSON.stringify(result, null, ' '));

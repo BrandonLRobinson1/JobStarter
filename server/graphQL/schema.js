@@ -22,23 +22,34 @@ var mongoose = require('../db/db');
 var USERS = mongoose.model('User', {  
     // id: mongoose.Schema.Types.ObjectId,
     email: String,
-    password: String//,
-  //     userInfo: {
-  //     name: String,
-  //     address: String,
-  //     address2: String,
-  //     relocation: String,
-  //     age: Number,
-  //     phone: Number,
-  //     resume: String,
-  //     coverLetter: String,
-  //     linkedIn: String,
-  //     gitHub: String,
-  //     authorized: String,
-  //     disability: Boolean //,
-  //     // linkToVideo: String
-  //   }
+    password: String,
+    userInfo: {
+      name: String,
+      address: String,
+      address2: String,
+      relocation: String,
+      age: Number,
+      phone: Number,
+      resume: String,
+      coverLetter: String,
+      linkedIn: String,
+      gitHub: String,
+      authorized: String,
+      disability: Boolean //,
+      // linkToVideo: String
+    }
   })
+
+let userAttr = new graphql.GraphQLObjectType({
+  name: 'userAttr',
+  fields: function() {
+    return{
+      name: {
+        type: graphql.GraphQLString
+      }
+    }
+  }
+});
 
 let userType = new graphql.GraphQLObjectType({
   name: 'user',
@@ -52,8 +63,47 @@ let userType = new graphql.GraphQLObjectType({
       },
       password: {
         type: graphql.GraphQLString
+      },
+      // userInfo: {
+      //   type: new graphql.GraphQLList(userAttr),
+      //   resolve(user){
+      //     return [
+      //       {test: user}
+      //     ];
+      //   }
+      // }
+      
+      userInfo: {
+        type: new graphql.GraphQLList(userAttr),
+        resolve(user){
+          return [
+            // {name: user}
+            {name: user.userInfo.name}
+          ];
+        }
       }
+
+      // userInfo: {
+      //   type: new graphql.GraphQLObjectType({
+      //     name: 'attr',
+      //     fields: function() {
+      //       return{
+      //         name: {
+      //           type: graphql.GraphQLString
+      //         }
+      //       }
+      //     }
+      //   })
+      // }
       // thinking for nested fields return a new object type
+      
+
+      // userInfo: {
+      //   type: graphql.GraphQLString
+      // }
+
+
+
     }
   }
 });
@@ -120,8 +170,11 @@ const queryType = new graphql.GraphQLObjectType({
       resolve: () => {
         return new Promise((resolve, reject) => {
           USERS.find((err, users) =>{
-            if(err) reject(err)
-             else resolve(users) 
+            if(err) { reject(err) 
+             } else { 
+              console.log(users);
+              resolve(users) ;
+             }
           })
         })
       }
