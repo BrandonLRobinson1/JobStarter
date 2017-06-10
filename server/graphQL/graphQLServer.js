@@ -8,11 +8,14 @@ var bodyParser = require('body-parser');
 // let query = 'query { users{id,email,password} }';
 let query = 'query { users {id,email,password,userInfo{name, address, address2,relocation,age,phone,resume,coverLetter,linkedIn,gitHub,authorized,disability}} }';
 graphql(SCHEMA, query)
-  .then( function(result){
+  .then( function(result) {
     console.log(JSON.stringify(result, null, ' '));
-  } );
+  });
 
 let app = express();
+
+// app.use(bodyParser.json());
+
 app.use('/graphql', graphQLHTTP({schema: SCHEMA, rootValue: query, pretty: true, graphiql:true}))
   .listen(8080, function(err) {
     console.log('GraphQL for the win')

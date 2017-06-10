@@ -21,7 +21,7 @@ var USERS = mongoose.model('User', {
       disability: Boolean //,
       // linkToVideo: String
     }
-  })
+  });
 
 let userAttr = new graphql.GraphQLObjectType({
   name: 'userAttr',
@@ -137,7 +137,6 @@ const MutationType = new graphql.GraphQLObjectType({
   }
 });
 
-
 const queryType = new graphql.GraphQLObjectType({
   name: 'Query',
   fields: () => ({
@@ -156,7 +155,7 @@ const queryType = new graphql.GraphQLObjectType({
       }
     }
   })
-})
+});
 
 
 module.exports = new graphql.GraphQLSchema({
