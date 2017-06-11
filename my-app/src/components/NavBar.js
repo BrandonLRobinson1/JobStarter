@@ -18,7 +18,7 @@ class NavBar extends React.Component{
       <span>
          <ul className="nav">
          <li>
-            <Link  to="/">
+            <Link to="/">
               Logo Icon
             </Link>
           </li>

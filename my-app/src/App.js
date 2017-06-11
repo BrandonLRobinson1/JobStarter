@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import NavBar from './components/NavBar';
+import NavBarLoggedIn from './components/NavBarLoggedIn';
 import Footer from './components/Footer';
 import SignUpForm from './components/SignUpForm'
 
@@ -165,7 +166,6 @@ render() {
         //   </div>
         // )
 
-
     let newSignUp = this.state.newSignUp;
     let loggedIn = this.state.loggedIn;
     let namePath = this.state.name || 'test';
@@ -174,8 +174,6 @@ render() {
     //if loggedin AND newsignup are false render original home
     //if new sign up is true, render info gather, then route real home by setting logged in to true and signed in to false
     // if logged in is true, render new everythign including nav
-
-
 
     if(!loggedIn && !newSignUp) {
       return (
@@ -201,8 +199,10 @@ render() {
 
     if (loggedIn && !newSignUp){
       return (
-        <div>
+        <div className="container">
           <h1>Redirect from above, or just render completley new components which is the same thing</h1>
+          <NavBarLoggedIn userSignUp={this.userSignUp}/>
+          <Footer />
         </div>
       )
     }
