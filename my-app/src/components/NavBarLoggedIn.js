@@ -14,19 +14,19 @@ import {
 } from 'react-router-dom'
 
 class NavBarLoggedIn extends React.Component{
+
   render(){
-    console.log('hmm');
+    console.log('navylogged in hmm');
     return (
       <span>
          <ul className="nav">
           <li>
-
             <NavLink activeClassName='active' to={ { pathname: "/JobListing", listings:{listings:'hey'} } }> 
               change props but for now -JobListings-
             </NavLink>
           </li>
         </ul>
-        <Route path="/JobListing" component={JobListing}/>
+        <Route exact path="/JobListing" component={JobListing}/>
       </span>  
     )
   }
