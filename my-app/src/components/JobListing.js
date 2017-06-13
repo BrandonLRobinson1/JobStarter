@@ -6,7 +6,7 @@ class JobListing extends React.Component {
   }
 
   render(){
-  console.log('listing test')
+  console.log(this.props, 'listing test')
     return(
       <div className="App">
         <h3>Job title</h3>

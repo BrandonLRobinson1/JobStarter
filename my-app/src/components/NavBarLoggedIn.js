@@ -22,12 +22,12 @@ class NavBarLoggedIn extends React.Component{
       <span>
          <ul className="nav">
           <li>
-            <NavLink to="/JobListing" activeClassName='active'>
+            <NavLink activeClassName='active' to="/JobListing" > 
               change props but for now -JobListings-
             </NavLink>
           </li>
         </ul>
-        <Route exact path="/JobListing" component={JobListing}/>
+        <Route path="/JobListing" component={JobListing}/>
       </span>  
     )
   }

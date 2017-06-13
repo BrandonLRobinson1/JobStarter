@@ -202,7 +202,7 @@ render() {
     if (loggedIn && !newSignUp){
       return (
         <div className="container">
-          <NavBarLoggedIn/>
+          <NavBarLoggedIn />
           <Footer switch={this.testFireBase}/>
         </div>
       )
@@ -215,7 +215,14 @@ App.contextTypes = {
 }
 
 export default App;
-
+    // if (loggedIn && !newSignUp){
+    //   return (
+    //     <div className="container">
+    //       <NavBarLoggedIn />
+    //       <Footer switch={this.testFireBase}/>
+    //     </div>
+    //   )
+    // }
           // <Redirect to=
           // {{
           //   pathname: '/JobStarter',
