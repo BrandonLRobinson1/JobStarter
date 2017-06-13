@@ -1,5 +1,10 @@
 import React from 'react';
 import JobListing from './JobListing';
+
+// import json from 'file.json';
+// import json from 'json-loader!file.json';
+import jobListings from '../openJobs/openJobs.json';
+
 // import PropTypes from 'prop-types';
 // import Home from './Home';
 
@@ -7,7 +12,7 @@ import JobListing from './JobListing';
 
 import {
   NavLink,
-  Route,
+  Route//,
   // Link
 } from 'react-router-dom'
 
@@ -17,7 +22,7 @@ class NavBarLoggedIn extends React.Component{
       <span>
          <ul className="nav">
           <li>
-            <NavLink activeClassName='active'  to={ { pathname: "/JobListing", userSignUp:{userSignUp:this.props.userSignUp} } }>
+            <NavLink activeClassName='active'  to={ { pathname: "/JobListing", listings:{listings:jobListings} } }>
               change props but for now -JobListings-
             </NavLink>
           </li>
