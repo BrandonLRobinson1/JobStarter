@@ -2,8 +2,6 @@ import React from 'react';
 import JobListing from './JobListing';
 import Home from './Home';
 
-import jsonListings from '../openJobs/openJobs.json';
-
 // import PropTypes from 'prop-types';
 // import Home from './Home';
 
@@ -22,7 +20,8 @@ class NavBarLoggedIn extends React.Component{
       <span>
          <ul className="nav">
           <li>
-            <NavLink activeClassName='active' to="/JobListing" > 
+
+            <NavLink activeClassName='active' to={ { pathname: "/JobListing", listings:{listings:'hey'} } }> 
               change props but for now -JobListings-
             </NavLink>
           </li>
@@ -43,5 +42,5 @@ class NavBarLoggedIn extends React.Component{
            // </NavLink>
 
 // <NavLink activeClassName='active'  to={ { pathname: "/JobListing", listings:{listings:jsonListings} } }>
-
+// <NavLink activeClassName='active' to="/JobListing" >
 export default NavBarLoggedIn

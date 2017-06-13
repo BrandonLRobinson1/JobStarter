@@ -1,4 +1,7 @@
 import React from 'react';
+import Jobs from './Jobs'
+import jsonListings from '../openJobs/openJobs.json';
+
 
 class JobListing extends React.Component {
   constructor(){
@@ -6,14 +9,16 @@ class JobListing extends React.Component {
   }
 
   render(){
-  console.log(this.props, 'listing test')
+  console.log(jsonListings, 'listing test')
     return(
       <div className="App">
-        <h3>Job title</h3>
-        <div>area</div>
-        <p>job desc</p>
-        <div>date</div>
-        <button>apply</button>
+        {jsonListings.map( (obj, index) => 
+          <Jobs 
+          obj={ obj }
+          // obj={ JSON.parse( obj ) }
+          index={index}
+         />
+        )}
       </div>
       )
   }
