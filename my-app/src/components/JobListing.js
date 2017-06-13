@@ -1,14 +1,19 @@
 import React from 'react';
 
 class JobListing extends React.Component {
-  // constructor(){
-  //   super();
-  // }
+  constructor(){
+    super();
+  }
 
   render(){
+  console.log('listing test')
     return(
       <div className="App">
-        listings ahhhhh
+        <h3>Job title</h3>
+        <div>area</div>
+        <p>job desc</p>
+        <div>date</div>
+        <button>apply</button>
       </div>
       )
   }

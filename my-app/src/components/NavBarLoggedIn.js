@@ -1,9 +1,8 @@
 import React from 'react';
 import JobListing from './JobListing';
+import Home from './Home';
 
-// import json from 'file.json';
-// import json from 'json-loader!file.json';
-import jobListings from '../openJobs/openJobs.json';
+import jsonListings from '../openJobs/openJobs.json';
 
 // import PropTypes from 'prop-types';
 // import Home from './Home';
@@ -18,24 +17,31 @@ import {
 
 class NavBarLoggedIn extends React.Component{
   render(){
+    console.log('hmm');
     return (
       <span>
          <ul className="nav">
           <li>
-            <NavLink activeClassName='active'  to={ { pathname: "/JobListing", listings:{listings:jobListings} } }>
+            <NavLink to="/JobListing" activeClassName='active'>
               change props but for now -JobListings-
             </NavLink>
           </li>
         </ul>
-        <Route path="/JobListing" component={JobListing}/>
+        <Route exact path="/JobListing" component={JobListing}/>
       </span>  
     )
   }
 }
 
+//this.props.location.testSwitch
 // NavBarLoggedIn.propTypes = {
 //   userSignUp: PropTypes.func.isRequired,
 //   userLogIn: PropTypes.func.isRequired
 // }
+       // <NavLink activeClassName='active'  to="/JobListing/jobs">
+         //     change props but for now -JobListings-
+           // </NavLink>
+
+// <NavLink activeClassName='active'  to={ { pathname: "/JobListing", listings:{listings:jsonListings} } }>
 
 export default NavBarLoggedIn

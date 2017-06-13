@@ -26,6 +26,7 @@ class SignUp extends React.Component {
 
 
   render() {
+    console.log('log signup')
     return (
       <div className="App form">
         Sign Up
