@@ -36,6 +36,8 @@ class JobListing extends React.Component {
   }
 
   render(){
+    //**** instead of using state i can use a variable and a bang operator here, reference wb16 for questions 
+
       if (this.state.all) {
         return(
           <div className="App">
