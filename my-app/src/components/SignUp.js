@@ -24,7 +24,6 @@ class SignUp extends React.Component {
     this.SignUpForm.reset();
   }
 
-
   render() {
     console.log('log signup')
     return (

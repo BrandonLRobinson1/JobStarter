@@ -7,6 +7,7 @@ let db               = require('./db/db.js');
 let config           = require('config');
 let morgan           = require('morgan');
 var PORT             = 8888;
+var emoji            = require('node-emoji')
 // var PORT        = process.env.NODE_ENV || 8888;
 let jobStarterRouter =  require('./resources/jobStarterRouter.js');
 

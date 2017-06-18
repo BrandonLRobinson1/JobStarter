@@ -4,7 +4,7 @@
   "description": "personalizing the job search",
   "main": "index.html",
   "scripts": {
-    "start": "NODE_ENV=dev && node server/server.js",
+    "start": "NODE_ENV=dev && node server/server.js '👀'",
     "test": "mocha --timeout 10000"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "live-server": "^1.2.0",
     "mongod": "^2.0.0",
     "mongoose": "^4.9.5",
+    "node-emoji": "^1.5.1",
     "passport-strategy": "^1.0.0",
     "react": "^15.5.4",
     "react-router": "^4.1.1",
