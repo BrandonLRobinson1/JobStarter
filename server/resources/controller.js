@@ -2,6 +2,12 @@
 let bcrypt        = require('bcrypt');
 let User          = require('./testSchema');
 
+exports.catchErrors = (fn) => {
+  return function(req, res, next) {
+    return fn(req, res, next).catch(next);
+  };
+};
+
 
 exports.createUser = function(req, res){
 
