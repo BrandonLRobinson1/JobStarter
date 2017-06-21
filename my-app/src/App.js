@@ -11,7 +11,6 @@ import SignUpForm from './components/SignUpForm';
 // import TestThatWillBeDelete from './components/Welcome';
 import base from './firebase/base';
 
-
 import {
 // Redirect,
 // // BrowserRouter as Router,

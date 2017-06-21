@@ -8,7 +8,6 @@ exports.catchErrors = (fn) => {
   };
 };
 
-
 exports.createUser = function(req, res){
 
   let email = req.body.email;
