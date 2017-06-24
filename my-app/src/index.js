@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-
 // import PageNotFound from './components/PageNotFound';
 
 import './index.css';
@@ -12,7 +11,7 @@ import {
   Route
   // Switch
   // browserHistory //history={browserHistory}
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 const Root = () => {
   return(
