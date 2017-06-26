@@ -45,6 +45,7 @@ class LogIn extends React.Component {
 }
 
 export default LogIn;
+
 // final form credentials
 // <input type='email' placeholder='email' className="inputEmail"  required></input>
 // <input type='password' placeholder='password' className="inputPasswird" required></input>
