@@ -85,7 +85,6 @@ let userType = new graphql.GraphQLObjectType({
         resolve(user){
           return [
             {
-              // name: user,
               name: user.userInfo.name,
               address: user.userInfo.address,
               address2: user.userInfo.address2,

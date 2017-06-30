@@ -23,8 +23,8 @@ class Jobs extends React.Component {
         <div className="App">
             <h3>{job.jobTitle}</h3>
             <span>{job.address2}</span>
-            <p>{job.jobDesc}</p>
             <div>{job.datePosted}</div>
+            <p>{job.jobDesc}</p>
             <button onClick={ ()=>{this.props.grabItem( this ) } }>More Info - and style me like a button</button>
         </div>
       )  
