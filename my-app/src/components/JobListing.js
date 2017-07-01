@@ -1,7 +1,19 @@
 import React from 'react';
 import Jobs from './Jobs'
 import jsonListings from '../openJobs/openJobs.json';
-import IndivJob from './IndivJob'
+import IndivJob from './IndivJob';
+
+import {
+Redirect,
+// // BrowserRouter as Router,
+// // HashRouter as Router,
+Route
+// Link,
+// Switch
+// // NavLink,
+// // BrowserHistory
+// // Match
+} from 'react-router-dom'
 
 class JobListing extends React.Component {
   constructor(){
@@ -25,7 +37,7 @@ class JobListing extends React.Component {
     // console.log(this.props.obj);
     this.setState({
       all: false,
-      job: job
+      // job: job
     })
 
     window.setTimeout(function(){ 
@@ -56,7 +68,12 @@ class JobListing extends React.Component {
       {
         return(
           <div>
-            <IndivJob jobInfo={this.state.job}/>
+            <Redirect 
+            to={{
+              pathname: `/JobStarter/xxx`,
+              jobInfo: jsonListings
+              }}/>
+            <Route exact path={"/JobStarter/" + "xxx"} component={IndivJob}/>
           </div>
           )
       }
@@ -64,3 +81,9 @@ class JobListing extends React.Component {
 }
 
 export default JobListing;
+        //  {/*<div>
+        //     <IndivJob jobInfo={this.state.job}/>
+      //   </div>*/}
+                    // pathname: `/JobStarter/${job.company}`,
+                                // <Route exact path={"/JobStarter/" + job.company} component={IndivJob}/>
+                                
