@@ -13,3 +13,4 @@ class IndivJob extends React.Component {
 }
 
 export default IndivJob;
+
