@@ -8,7 +8,7 @@ exports.catchErrors = (fn) => {
   };
 };
 
-exports.createUser = async function(req, res){
+exports.createUser = function(req, res){
 
   let email = req.body.email;
   // let salt = bcrypt.genSaltSync(10);
@@ -19,32 +19,61 @@ exports.createUser = async function(req, res){
     password: hash
   } );
   
-  console.log(User.findOne({email: email}), ' user findone - boolean?');
-  User.findOne({email: email})
-  //running the find, then regardless its checking running then AND catch
-    .then( (user) => {
-      console.log(user, 'user god')
-      if(!user){
-        console.log('this user/email has already been created');
-        res.status(400).send('this user/email has already been created');
-      } else {
-        console.log('succesfuly saved new user');
-        
-        newUser
-          .save()
-          .then( ()=>{
-            res.status(201).send(newUser);
-          })
-          .catch( (err) => {
-            console.log(err);
-          } )
-      }
-     }
-    )
-    .catch( (err) => {
-        throw Error(err);
-     }
-    );
+
+  User.findOne({email: email}, (err, user) => {
+    
+    if(err) reject(err);
+
+    console.log(user, ' this is the user ')
+    if(!user){
+      console.log('this user/email has already been created');
+      // newUser.save( function(err, newuser){
+      //   if (err) console.log(err);
+      //   console.log('succesfuly saved new user');
+      //   res.status(201).send(newUser);
+      // } );
+      newUser.save()
+        .then( (user) => {
+          res.status(201).send(user);
+        })
+        .catch( (err) => {
+          console.error(err);
+          console.log('did not save')
+        } )
+      // res.status(400).send('this user/email has already been created');
+      //resolve();
+    } else {
+      // console.log('this user/email has already been created')
+      res.status(400).send('this user/email has already been created');
+      //resolve();
+    }
+  } );
+
+  //let findOneBwoi = User.findOne({email: email});
+  //console.log( findOneBwoi.then( (result) => {console.log(result)} ).catch( (err) => {throw Error(err) } ) , ' hmm');
+  // console.log( User.findOne({email: email}).then( (result) => {console.log(result)} ).catch( (err) => {throw Error(err) } ) , ' hmm');
+  // User.findOne({email: email})
+  // //running the find, then regardless its checking running then AND catch
+  //   .then( (user) => {
+  //     console.log(user, 'user god')
+  //     if(!user){
+  //       console.log('this user/email has already been created');
+  //       res.status(400).send('this user/email has already been created');
+  //     } else {
+  //       console.log('succesfuly saved new user');
+  //       newUser
+  //         .save()
+  //         .then( (info)=>{
+  //           res.status(201).send(newUser);
+  //         })
+  //     }
+  //     return
+  //    }
+  //   )
+  //   .catch( (err) => {
+  //       throw Error(err);
+  //    }
+  //   );
 
   // User.findOne({email: email}, (err, user)=>{
   //   if (err) { return handleError(err) } 
@@ -155,7 +184,7 @@ exports.updateUser = function(req, res){
   
 //   User.findOne({email: email}, (err, user)=>{
 //     if (err) { return handleError(err) } 
-    
+//     console.log(user,' this is the user tho (ends up null)')
 //     if (!user) {
 //       newUser.save( function(err, newuser){
 //         if (err) console.log(err);
