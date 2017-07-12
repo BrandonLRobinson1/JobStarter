@@ -9,7 +9,6 @@ exports.catchErrors = (fn) => {
 };
 
 exports.createUser = function(req, res){
-
   let email = req.body.email;
   // let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(req.body.pw, 10); // no need to use salt can jst replace it with ten
@@ -19,76 +18,53 @@ exports.createUser = function(req, res){
     password: hash
   } );
   
+  let findTheUser = User.findOne({email: email});
 
-  User.findOne({email: email}, (err, user) => {
-    
-    if(err) reject(err);
+  findTheUser
+    .then( (user) => {
+      if(!user){
+        newUser.save()
+          .then( (userNew) => {
+            res.status(201).send(userNew);
+          })
+          // .catch( (err) => {
+          //   throw Error(err);
+          // } );
+      } else {
+        res.status(400).send('this user/email has already been created');
+      }
+    } )
+    .catch( (err) => {
+      console.log('there is an issue broooo')
+      console.log(err);
+      throw Error(err);
+    })
 
-    console.log(user, ' this is the user ')
-    if(!user){
-      console.log('this user/email has already been created');
-      // newUser.save( function(err, newuser){
-      //   if (err) console.log(err);
-      //   console.log('succesfuly saved new user');
-      //   res.status(201).send(newUser);
-      // } );
-      newUser.save()
-        .then( (user) => {
-          res.status(201).send(user);
-        })
-        .catch( (err) => {
-          console.error(err);
-          console.log('did not save')
-        } )
-      // res.status(400).send('this user/email has already been created');
-      //resolve();
-    } else {
-      // console.log('this user/email has already been created')
-      res.status(400).send('this user/email has already been created');
-      //resolve();
-    }
-  } );
 
-  //let findOneBwoi = User.findOne({email: email});
-  //console.log( findOneBwoi.then( (result) => {console.log(result)} ).catch( (err) => {throw Error(err) } ) , ' hmm');
-  // console.log( User.findOne({email: email}).then( (result) => {console.log(result)} ).catch( (err) => {throw Error(err) } ) , ' hmm');
-  // User.findOne({email: email})
-  // //running the find, then regardless its checking running then AND catch
-  //   .then( (user) => {
-  //     console.log(user, 'user god')
-  //     if(!user){
-  //       console.log('this user/email has already been created');
-  //       res.status(400).send('this user/email has already been created');
-  //     } else {
-  //       console.log('succesfuly saved new user');
-  //       newUser
-  //         .save()
-  //         .then( (info)=>{
-  //           res.status(201).send(newUser);
-  //         })
-  //     }
-  //     return
-  //    }
-  //   )
-  //   .catch( (err) => {
-  //       throw Error(err);
-  //    }
-  //   );
+  // =======> OLD PROMISE
+  // User.findOne({email: email}, (err, user) => {
+  //   if(err) reject(err);
 
-  // User.findOne({email: email}, (err, user)=>{
-  //   if (err) { return handleError(err) } 
-    
-  //   if (!user) {
-  //     newUser.save( function(err, newuser){
-  //       if (err) console.log(err);
-  //       console.log('succesfuly saved new user');
-  //       res.status(201).send(newUser);
-  //     } );
+  //   console.log(user, ' this is the user ')
+  //   if(!user){
+  //     //console.log('this user/email has already been created');
+  //     newUser.save()
+  //       .then( (user) => {
+  //         res.status(201).send(user);
+  //       })
+  //       .catch( (err) => {
+  //         console.error(err);
+  //         console.log('did not save')
+  //       } )
+  //     // res.status(400).send('this user/email has already been created');
+  //     //resolve();
   //   } else {
-  //     console.log('this user/email has already been created');
+  //     // console.log('this user/email has already been created')
   //     res.status(400).send('this user/email has already been created');
+  //     //resolve();
   //   }
-  // });
+  // } );
+
 };
 
 
