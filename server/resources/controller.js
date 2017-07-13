@@ -19,15 +19,16 @@ exports.createUser = function(req, res){
   } );
   
   let findTheUser = User.findOne({email: email});
-
   findTheUser
     .then( (user) => {
+      // throw new Error('whoops'); // Tests the catch on line 37;
       if(!user){
         newUser.save()
           .then( (userNew) => {
             res.status(201).send(userNew);
           })
           // .catch( (err) => {
+          //   console.log('catch number 1')
           //   throw Error(err);
           // } );
       } else {
