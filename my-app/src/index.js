@@ -6,7 +6,7 @@ import App from './App';
 import './index.css';
 
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router, /// AS ROUTER
   Route
   // Switch
   // browserHistory //history={browserHistory}
