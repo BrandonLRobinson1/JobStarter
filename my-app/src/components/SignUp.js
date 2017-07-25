@@ -46,6 +46,7 @@ class SignUp extends React.Component {
 }
 
 export default SignUp;
+
 // final form credentials
 // <input type='email' placeholder='email' className="inputEmail" ></input>
 // <input type='password' minLength='5' placeholder='password' className="inputPasswird" required></input>
