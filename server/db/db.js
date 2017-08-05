@@ -1,7 +1,9 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/jobStarter');
+let mongoose = require('mongoose');
 
-var db = mongoose.connection;
+mongoose.connect('mongodb://localhost/jobStarter');
+mongoose.Promise = global.Promise; // Mongoose now has access to ES6 promises
+
+let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open', function() {

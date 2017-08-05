@@ -94,3 +94,13 @@ render() {
 // }
 
 // export default App
+
+
+
+
+//notes 6/29
+fix
+routing
+job app pages 
+add googlemaps api
+fix gulp

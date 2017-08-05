@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+// import PageNotFound from './components/PageNotFound';
 
-
-import PageNotFound from './components/PageNotFound';
 import './index.css';
 
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router, /// AS ROUTER
   Route
   // Switch
   // browserHistory //history={browserHistory}
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 const Root = () => {
   return(
@@ -29,4 +28,4 @@ const Root = () => {
 ReactDOM.render(
   <Root />,
   document.getElementById('root')
-);
+); 

@@ -7,16 +7,21 @@ let db               = require('./db/db.js');
 let config           = require('config');
 let morgan           = require('morgan');
 var PORT             = 8888;
+var emoji            = require('node-emoji')
 // var PORT        = process.env.NODE_ENV || 8888;
-let jobStarterRouter =  require('./resources/jobStarterRouter.js');
+let jobStarterRouter = require('./resources/jobStarterRouter.js');
 
 let app              = express();
+
+// webrtc ==> look up package front cam
 
 // console.log('SUPPRESS_NO_CONFIG_WARNING: ' + config.util.getEnv('SUPPRESS_NO_CONFIG_WARNING'));
 // console.log(config.util.env)
 
 // A resource makes a cross-origin HTTP request when it requests a resource from a different domain, or port than the one which the first resource itself serves
 // header is a key on the response object, so set it with the middle
+
+//safe hearders = detect if youre logged in or not before you set the headers, but if front end is on the same server then you dont even need the cross origin
 app.use( function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', '*');
