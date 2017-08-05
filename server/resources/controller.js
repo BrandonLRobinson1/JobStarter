@@ -26,11 +26,7 @@ exports.createUser = function(req, res){
         newUser.save()
           .then( (userNew) => {
             res.status(201).send(userNew);
-          })
-          // .catch( (err) => {
-          //   console.log('catch number 1')
-          //   throw Error(err);
-          // } );
+          });
       } else {
         res.status(400).send('this user/email has already been created');
       }
